@@ -1,0 +1,23 @@
+{* Latte template *}
+{block content}
+<section id="user-login">
+    <div class="container">
+		<h1>Přihlášení</h1>
+		{form signInForm}
+            <fieldset>
+  		        <legend>Přihlášení</legend>
+				<ol>
+				    <li>{label email/}{input email}</li>
+				    <li>{label password/}{input password}</li>
+                    <li>{input send}</li>
+                </ol>
+            </fieldset>
+		{/form}
+		
+		<ul>
+			<a n:href="Homepage:default"><li>Zpět na hlavní stránku</li></a>
+			<a n:href="Password:forgotten"><li>Zapomenuté heslo</li></a>
+			<a n:href="Sign:up"><li>Registrace</li></a>
+		</ul>
+	</div>
+</section>

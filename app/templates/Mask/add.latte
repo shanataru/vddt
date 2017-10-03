@@ -1,0 +1,76 @@
+{* Latte template *}
+{block styles}
+    {include parent}
+    <link rel="stylesheet" href="{$basePath}/css/form.css">
+{/block}
+{block content}
+
+<section id="mask-form">
+    <div class="container">
+        <h1>Přidání Masky</h1>
+        <p>Maska je snímek či video, které bude uloženo na serveru a budete ho moci použít při zpracování materiálů pomocí binárnch souborů. Masku lze nastavit jako univerzální, nebo ji přiřadit k nahranému materiálu. Všechny informace krom samotného média je možné později změnit.</p>
+        {form addMaskForm}
+            <fieldset>
+                <legend>Materiál</legend>
+                <ol class="add-form">
+                    <li class="add-part name">
+                        <h2>{label name/}</h2>
+                        <dl>
+                            <dt>{label name/}</dt>
+                            <dd>{input name}</dd>
+                        </dl>
+                    <p>Vyberte dobré jméno pro váši masku, později ji podle něj budete moci najít, proto je dobrý krátký a unikátní název.    Nebojte se o duplicitní jména na serveru, o to se postaráme, vaše jméno zůstane nezměněné.</p>
+                    </li>
+                    <li class="add-part file">
+                        <h2>{label file/}</h2>
+                        <dl>
+                            <dt>{label file/}</dt>
+                            <dd>{input file}</dd>
+                        </dl>
+                    <p>Zvolte prosím soubor, který chcete nahrát. Prozatím podporujeme pouze jpeg, png, gif a tiff. Videosoubory bude možné přidávat později.</p>
+                    </li>
+                    <li class="add-part detail">
+                        <ol>
+                            <li id="usage">
+                                <h2>{label usage/}</h2>
+                                <p>Zvolte, jestli se jedná o univerzální masku, nebo ji chcete přiřadit k jednomu nebo více materiálům.</p>
+                                <dl>
+                                    <dt>{label usage/}</dt>
+                                    <dd>{input usage}</dd>
+                                </dl>
+                            </li>
+                            <li id="privacy">
+                                <h2>{label privacy/}</h2>
+                                <p>Soukromé masky vidíte a můžete používat pouze vy, veřejné jsou takto přístupné pro kohokoliv.</p>
+                                <dl>
+                                    <dt>{label privacy/}</dt>
+                                    <dd>{input privacy}</dd>
+                                </dl>
+                            </li>
+                        </ol>
+                    </li>
+                    <li class="add-part material" id="material">
+                        <h2>{label material/}</h2>
+                        <p>Zadejte id materiálů, ke kterým chcete tuto masku přiřadit. Jako oddělovač použijte čárku.</p>
+                        <dl>
+                            <dt>{label material/}</dt>
+                            <dd>{input material}</dd>
+                        </dl>
+                    </li>
+                    <li class="add-part note">
+                        <h2>{label note/}</h2>
+                        <p>Připojte poznámku, může obsahovat dopňující informace k masce pro ostatní uživatele.</p>
+                        <dl>
+                            <dt>{label note/}</dt>
+                            <dd>{input note}</dd>
+                        </dl>
+                    </li>
+                    <li class="add-part submit">
+                        <p>Hotovo!</p>
+                        {input send}
+                    </li>           
+                </ol>
+            </fieldset>
+        {/form}
+    </div>
+</section>

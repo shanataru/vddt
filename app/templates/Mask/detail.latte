@@ -1,0 +1,77 @@
+{* Latte template *}
+{block styles}
+{include parent}
+<link rel="stylesheet" href="{$basePath}/css/detail.css">
+{/block}
+{block content}
+
+<section id="mask-info">
+    <div class="container">
+        <ul class="stats">
+            <li>{$maskData['countProcessing']} zpracování</li>
+            <li>{$maskData['usage']}</li>
+            <li>maska</li>
+        </ul>
+        <img src="{$maskData['previewPath']}" />
+        <ul class="actions {if $maskData['owner']}owner{else}observer{/if}">
+            <li><a href="">použít</a></li>
+            <li><a href="">přidat k textuře</a></li>
+             {if $maskData['owner']}<li><a n:href="Mask:modify maskId => $maskId">upravit</a></li>{/if}
+            <li><a href="">stáhnout</a></li>
+            {if $maskData['owner']}<li><a n:href="Mask:delete maskId => $maskId">smazat</a></li>{/if}
+        </ul>
+    </div>
+</section>
+<section id="statistics">
+    <div class="container">
+        <h2>Informace</h2>
+        <table class="info">
+            <tr>
+                <th>název souboru</th>
+                <th>rozměry</th>
+                <th>formát</th>
+                <th>velikost</th>
+                <th>soukromí</th>
+            </tr>
+            <tr>
+                <td>{$maskData['filename']}</td>
+                <td>{$maskData['dimensions']}</td>
+                <td>{$maskData['format']}</td>
+                <td>{$maskData['filesize']}</td>
+                <td>{$maskData['privacy']}</td>
+            </tr>
+        </table>
+        <table class="info">
+            <tr>
+                <th>typ média</th>
+                <th>datum nahrání</th>
+                <th>vlastník</th>
+            </tr>
+            <tr>
+                <td>{$maskData['mediaType']}</td>
+                <td>{$maskData['uploadTime']}</td>
+                <td>{$maskData['author']}</td>
+            </tr>
+        </table>
+        <p>{$maskData['note']}</p>   
+    </div>
+</section>
+
+<section id="data">
+    <div class="container">
+         <h2>Zpracování</h2>
+        {if $maskData["countProcessing"] == 0}
+            <div class="nodata">Žádná data</div>
+        {else}
+            {control maskProcessingGrid}
+        {/if}
+    </div>
+    <div class="container">
+        <h2>Materiály</h2>
+        {if $maskData["countMaterial"] == 0}
+            <div class="nodata">Žádná data</div>
+        {else}
+            {control maskMaterialGrid}
+        {/if}
+    </div>
+</section>

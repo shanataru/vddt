@@ -1,0 +1,55 @@
+{**
+ * @param string   $basePath web base path
+ * @param array    $flashes  flash messages
+ *}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>{ifset title}{include title|stripHtml} | {/ifset}DDT</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	{block styles}
+	<link rel="stylesheet" href="{$basePath}/css/style.css">
+	<link rel="stylesheet" href="{$basePath}/css/header.css">
+    <link rel="stylesheet" href="{$basePath}/css/tables.css">
+	<link rel="stylesheet" href="{$basePath}/css/lists.css">
+	{/block}
+	{block head}
+	{/block}
+</head>
+
+<body>
+	<header>
+		<a n:href="Homepage:default"><img id="logo" src="{$basePath}/images/planeta.png"></a>
+		<form>
+			<label for="search">vyhledávání</label>
+			<input type="text" name="search" id="search">
+			<input type="image" src="{$basePath}/images/search.svg" alt="submit" id="submit">
+		</form>
+        {if $user->loggedIn}
+			<a n:href="Profile:detail"><img id="avatar" src="{$basePath}/images/logo_uziv.png"></a>
+        {else}
+        	<a n:href="Sign:in"><img id="avatar" src="{$basePath}/images/logo_uziv.png"></a>
+        {/if}
+	</header>
+	<div n:foreach="$flashes as $flash" n:class="flash, $flash->type">{$flash->message}</div>
+
+	{include content}
+
+	<footer>
+		
+	</footer>
+	{block scripts}
+	<script type="text/javascript" src="{$basePath}/js/jquery-3.2.1.min.js"></script>
+	<script src="https://nette.github.io/resources/js/netteForms.min.js"></script>
+	<script src="{$basePath}/js/main.js"></script>
+	<script type="text/javascript" src="{$basePath}/js/nette.ajax.js/nette.ajax.js"></script>
+	<script type="text/javascript">
+	/* inicializace ajaxu */
+	$(function () { $.nette.init(); });
+	</script>
+	{/block}
+</body>
+</html>

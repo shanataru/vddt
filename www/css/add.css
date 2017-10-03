@@ -1,0 +1,104 @@
+fieldset{
+	margin: 1em 0;
+	border: none;
+	padding: 0;
+}
+
+legend{
+	display: none;
+}
+
+ol.upload-form{
+	padding: 0;
+	margin: 0;
+}
+
+ol.upload-form li{
+	padding: 2em 0;
+	margin: 0;
+	display: block;
+}
+
+ol.upload-form li.upload-part dl{
+	
+}
+
+ol.upload-form li.upload-part dl dt{
+	display: none;
+}
+
+ol.upload-form li.upload-part dl dd{
+	margin: 0	
+}
+
+ol.upload-form li.upload-part dl dd input,
+ol.upload-form li.upload-part dl dd textarea,
+ol.upload-form li.upload-part input{
+	background: #F0F0F0;
+}
+
+ol.upload-form li.upload-part.detail{
+	overflow: auto;
+}
+
+ol.upload-form li.upload-part.detail ol{
+	width: 100%;
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	display: flex;
+}
+
+ol.upload-form li.upload-part.detail li{
+	width: 32%;
+	padding: 0 1em;
+	box-sizing: border-box;
+	background: #F0F0F0;
+	border-radius: 0.3em;
+	float: left;
+}
+
+ol.upload-form li.upload-part.detail li#move{
+	margin: 0 1.5%;
+}
+
+ol.upload-form li.upload-part.detail li#take select,
+ol.upload-form li.upload-part.detail li#move select {
+	width: 100%;
+	background: #FFF;
+}
+
+ol.upload-form li.upload-part.name,
+ol.upload-form li.upload-part.file{
+	overflow: auto;
+}
+	
+ol.upload-form li.upload-part.name input,
+ol.upload-form li.upload-part.file input{
+	width: 47%;
+	margin-right: 3%;
+	float: left;
+}
+
+ol.upload-form li.upload-part.name p,
+ol.upload-form li.upload-part.file p{
+	width: 50%;
+	float: left;
+	margin: 0;
+}
+
+ol.upload-form li.upload-part.name{
+	padding-bottom: 0;
+}
+
+ol.upload-form li.upload-part.file{
+	padding-top: 0;
+}
+
+ol.upload-form li.upload-part.tags textarea,
+ol.upload-form li.upload-part.note textarea{
+	width: 100%;
+	height: 6em;
+    resize: none;
+}
+

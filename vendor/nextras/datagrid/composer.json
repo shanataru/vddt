@@ -1,0 +1,28 @@
+{
+	"name": "nextras/datagrid",
+	"type": "library",
+	"description": "Datagrid component for Nette Framework.",
+	"keywords": ["nextras", "nette", "datagrid"],
+	"license": ["MIT"],
+	"authors": [
+		{
+			"name": "Nextras Community",
+			"homepage": "https://github.com/nextras/forms/graphs/contributors"
+		}
+	],
+	"require": {
+		"php": ">=5.6",
+		"nette/application": "~2.4",
+		"nette/component-model": "~2.3",
+		"nette/utils": "~2.4",
+		"latte/latte": "~2.4"
+	},
+	"extra": {
+		"branch-alias": {
+			"dev-master": "3.0-dev"
+		}
+	},
+	"autoload": {
+		"psr-4": { "Nextras\\Datagrid\\": "src" }
+	}
+}

@@ -1,0 +1,30 @@
+ul.materials li.data-material {
+	width: 33%;
+	float: left;
+	display: inline-block;
+	padding: 0.5em;
+}
+
+ul.materials li.data-material div.preview{
+	background: #CCC;
+	height: 15em;
+	border-top-left-radius: 0.5em;
+	border-top-right-radius: 0.5em;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+ul.materials li.data-material table tr td{
+	padding: 1em 0.5em;
+	text-align: center;
+}
+
+ul.materials li.data-material table tr:last-child td:first-child{
+	border-top-left-radius: 0em;
+}
+
+ul.materials li.data-material table tr:first-child td:last-child{
+	border-top-right-radius: 0em;
+}
+

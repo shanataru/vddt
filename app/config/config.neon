@@ -1,0 +1,82 @@
+#
+# WARNING: it is CRITICAL that this file & directory are NOT accessible directly via a web browser!
+# https://nette.org/security-warning
+#
+parameters:
+	database:
+		driver: mysql
+
+application:
+	errorPresenter: Error
+	mapping:
+		*: App\*Module\Presenters\*Presenter
+
+
+session:
+	expiration: 14 days
+
+
+services:
+	- App\Data\Users
+	- App\Data\CameraMoves
+	- App\Data\CameraTakes
+	- App\Data\Binaries
+	- App\Data\Materials
+	- App\Data\TagTextures
+	- App\Data\MaskTextures
+	- App\Data\Previews
+	- App\Data\Masks
+	- App\Data\Products
+	- App\Data\Processings
+	- App\Data\Tags
+	- App\Model\Model
+	- App\Model\Homepage
+	- App\Model\User
+	- App\Model\Processing
+	- App\Model\Material
+	- App\Model\Mask
+	- App\Model\Binary
+	- App\Model\Product
+	- App\Forms\FormFactory
+	- App\Forms\SignInForm
+	- App\Forms\SignUpForm
+	- App\Forms\ForgottenPasswordForm
+	- App\Forms\ModifyProfileForm
+	- App\Forms\ChangePasswordForm
+	- App\Forms\MaterialForm
+	- App\Forms\MaskForm
+	- App\Forms\BinaryForm
+	- App\Tables\TableFactory
+	- App\Tables\ProcessingTable
+	- App\Tables\BinaryTable
+	- App\Tables\MaskTable
+	- App\Tables\MaterialTable
+	- App\Tables\ProductTable
+	router: App\RouterFactory::createRouter
+	authenticator: App\Model\Authenticator
+
+
+extensions:
+	console: Kdyby\Console\DI\ConsoleExtension
+	events: Kdyby\Events\DI\EventsExtension
+	annotations: Kdyby\Annotations\DI\AnnotationsExtension
+	doctrine: Kdyby\Doctrine\DI\OrmExtension
+
+
+database:
+	dsn: 'mysql:host=wm114.wedos.net;dbname=d130653_vddt'
+	user: 'w130653_vddt'
+	password: 'tBVWjHAd'
+	#options:
+		#lazy: yes
+
+doctrine:
+	#user: w130653_vddt
+	#password: tBVWjHAd nebo D6BsAQTM
+	user: w130653_vddt
+	password: tBVWjHAd
+	driver: pdo_mysql
+	dbname: d130653_vddt
+	host: wm114.wedos.net
+	metadata:
+		App: %appDir%

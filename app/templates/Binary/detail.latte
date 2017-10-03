@@ -1,0 +1,60 @@
+{* Latte template *}
+{block styles}
+{include parent}
+<link rel="stylesheet" href="{$basePath}/css/detail.css">
+{/block}
+{block content}
+
+<section id="binary-info">
+    <div class="container">
+        <ul class="stats binary">
+            <li>{$binaryData['countProcessing']} zpracování</li>
+            <li>binárka</li>
+        </ul>
+        <ul class="actions binary">
+            <li><a href="">spustit</a></li>
+            {if $binaryData['owner']}<li><a n:href="Binary:modify binaryId => $binaryId">upravit</a></li>{/if}
+            <li><a href="">stáhnout</a></li>
+            {if $binaryData['owner']}<li><a n:href="Binary:delete binaryId => $binaryId">smazat</a></li>{/if}
+        </ul>
+    </div>
+</section>
+<section id="statistics">
+    <div class="container">
+        <h2>Informace</h2>
+        <table class="info">
+            <tr>
+                <th>název souboru</th>
+                <th>jazyk</th>
+                <th>velikost</th>
+                <th>soukromé</th>
+            </tr>
+            <tr>
+                <td>{$binaryData['filename']}</td>
+                <td>{$binaryData['language']}</td>
+                <td>{$binaryData['filesize']}</td>
+                <td>{$binaryData['privacy']}</td>
+            </tr>
+        </table>
+        <table class="info">
+            <tr>
+                <th>datum nahrání</th>
+                <th>vlastník</th>
+            </tr>
+            <tr>
+                <td>{$binaryData['uploadTime']}</td>
+                <td>{$binaryData['author']}</td>
+            </tr>
+        </table>
+        <p>{$binaryData['note']}</p>
+    </div>
+</section>
+
+
+<section id="data">
+    <div class="container">
+        <h2>Zpracování</h2>
+        {control binaryProcessingGrid}
+
+    </div>
+</section>

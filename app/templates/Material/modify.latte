@@ -1,0 +1,97 @@
+{* Latte template *}
+{block styles}
+    {include parent}
+    <link rel="stylesheet" href="{$basePath}/css/form.css">
+{/block}
+{block content}
+
+<section id="material-form">
+    <div class="container">
+        <h1>Úprava materiálu</h1>
+        <p>Změňte položky, které chcete vyměnit a ponechte ostatní položky. Všechny změny se projeví ihned po uložení.</p>
+        {form modifyMaterialForm}
+            <fieldset>
+                <legend>Materiál</legend>
+                <ol class="modify-form">
+                    <li class="modify-part name">
+                        <div class="img-preview" style="background-image: url({$materialData['previewPath']})"></div>
+                        <div>
+                        <h2>{label name/}</h2>
+                        <dl>
+                            <dt>{label name/}</dt>
+                            <dd>{input name}</dd>
+                        </dl>
+                        <p>Vyberte dobré jméno pro váš materiál, později ho podle něj budete moci najít, proto je dobrý krátký a unikátní název. Nebojte se o duplicitní jména na serveru, o to se postaráme, vaše jméno zůstane nezměněné.</p>
+                        </div>
+                    </li>
+                    <li class="modify-part detail">
+                        <ol>
+                            <li id="take">
+                                <h2>{label take/}</h2>
+                                <p>Vyberte, který popis nejvíce vystihuje obsah záběru.</p>
+                                <dl>
+                                    <dt>{label take/}</dt>
+                                    <dd>{input take}</dd>
+                                </dl>
+                            </li>
+                            <li id="move">
+                                <h2>{label move/}</h2>
+                                <p>Vyberte, který popis pohybu kamery sedí nejvíce.</p>
+                                <dl>
+                                    <dt>{label move/}</dt>
+                                    <dd>{input move}</dd>
+                                </dl>
+                            </li>
+                            <li id="privacy">
+                                <h2>{label privacy/}</h2>
+                                <p>Soukromé materiály vidíte a můžete zpracovat pouze vy, veřejné jsou takto přístupné pro kohokoliv.</p>
+                                <dl>
+                                    <dt>{label privacy/}</dt>
+                                    <dd>{input privacy}</dd>
+                                </dl>
+                            </li>
+                        </ol>
+                    </li>
+                    <li class="modify-part tags">
+                        <h2>{label tags/}</h2>
+                        <p>Připojte tagy, aby bylo možné při vyhledávání dobře identifikovat. Oddělte jednotlivé tagy čárkami.</p>
+                        <dl>
+                            <dt>{label tags/}</dt>
+                            <dd>{input tags}</dd>
+                        </dl>
+                    </li>
+                    <li class="modify-part note">
+                        <h2>{label note/}</h2>
+                        <p>Připojte poznámku, může obsahovat dopňující informace ke snímku pro ostatní uživatele.</p>
+                        <dl>
+                            <dt>{label note/}</dt>
+                            <dd>{input note}</dd>
+                        </dl>
+                    </li>
+                    <li class="modify-part submit">
+                        <p>Hotovo!</p>
+                        {input send}
+                    </li>           
+                </ol>
+            </fieldset>
+        {/form}
+    </div>
+</section>
+
+<script>
+    function parse(source, destination) {
+        var tags_raw = document.getElementById(source).value;
+        var ul = document.getElementById(destination);
+        ul.innerHTML = "";
+        var tags = tags_raw.split(",");
+        for (var i = 0; i < tags.length; ++i) {
+            tags[i] = '#' + tags[i].trim();
+            if (tags[i] == "#")
+                continue;
+            var li = document.createElement("li");
+            li.appendChild(document.createTextNode(tags[i]));
+            ul.appendChild(li);
+        }
+        console.log(tags);
+    }
+</script>

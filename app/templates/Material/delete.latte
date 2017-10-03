@@ -1,0 +1,36 @@
+{* Latte template *}
+{block styles}
+{include parent}
+	<link rel="stylesheet" href="{$basePath}/css/delete.css">
+{/block}
+{block content}
+
+<section>
+    <div class="container">
+		<h1>Smazání materiálu</h1>
+		<div id="material-info">
+		<div class="img-preview" style="background-image: url({$materialData['previewPath']})"></div>
+		<dl>
+			<dt>název souboru</dt>
+			<dd>{$materialData['filename']}</dd>
+			<dt>rozměry</dt>
+			<dd>{$materialData['dimensions']}</dd>
+			<dt>typ média</dt>
+			<dd>{$materialData['mediaType']}</dd>
+			<dt>datum nahrání</dt>
+			<dd>{$materialData['uploadTime']}</dd>
+		</dl>
+		</div>
+		{if $materialData["countProcessing"] < 1}
+		<p>Tento materiál nemá dosud žádné zpracování, můžete ho tedy úplně odstranit z databáze. Opravdu chcete smazat tento materiál?</p>
+		<ul class="actions">
+			<li><a n:href="Material:deleteComplete materialId => $materialId">Ano</a></li>
+			<li><a n:href="Material:detail materialId => $materialId">Ne</a></li>
+		</ul>
+		{else}
+		<p>Oops, vypadá to, že na tento materiál jsou již navázána nějaká zpracování a jeho smazáním byste připravili ostatní uživatele o jejich data.</p>
+		{/if}
+	</div>
+</section>
+
+		

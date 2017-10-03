@@ -1,0 +1,23 @@
+{* Latte template *}
+
+{block content}
+<section id="user-modify">
+    <div class="container">
+		<h1>Úprava profilu</h1>
+		<p>Zde můžete upravit informace spojené s vaším profilem.</p>
+        {form modifyProfileForm}
+			<fieldset>
+				<legend>Změna údajů</legend>
+				<ol>
+					<li>{label degree/}{input degree}</li>
+					<li>{label name/}{input name}</li>
+					<li>{label surname/}{input surname}</li>
+					<li>{label email/}{input email}</li>
+					<li>{label password/}{input password}</li>
+					<li>{input send}	<a n:href="Profile:detail"><li>Zpět na profil</li></a> </li>
+				</ol>
+			</fieldset>
+        {/form}
+	</div>
+
+</section>

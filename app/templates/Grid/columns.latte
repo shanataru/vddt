@@ -1,0 +1,45 @@
+{define col-material}
+<td>
+    <a href="{plink Material:detail materialId => $row->materialId}">{$cell|truncate:15}</a>
+</td>
+{/define}
+{define col-materialId}
+<td>
+    <a href="{plink Material:detail materialId => $row->materialId}">{$cell|truncate:15}</a>
+</td>
+{/define}
+{define col-binary}
+<td>
+    <a href="{plink Binary:detail binaryId => $row->binaryId}">{$cell|truncate:15}</a>
+</td>
+{/define}
+{define col-mask}
+<td>
+    <a href="{plink Mask:detail maskId => $row->maskId}">{$cell|truncate:15}</a>
+</td>
+{/define}
+
+{define pagination}
+{if $paginator->pageCount > 1}				  
+<ul class="pagination">
+{if $paginator->isFirst()}
+	<li class="disabled first"><a><img src="/images/sipky_leve2_gray.png"></a></li>
+	<li class="disabled previous"><a><img src="/images/sipka_leva_gray.png"></a></li>
+{else}
+	<li><a href="{link paginate!, 'page' => 1}" class="ajax first"><img src="/images/sipky_leve2_yellow.png"></a></li>
+	<li><a href="{link paginate!, 'page' => $paginator->page - 1}" class="ajax previous"><img src="/images/sipka_leva_yellow.png"></a></li>
+{/if}
+
+<li class="active count">{$paginator->page}/{$paginator->pageCount}
+</li>
+
+{if $paginator->isLast()}
+	<li class="disabled next"><a><img src="/images/sipka_prava_gray.png"></a></li>
+	<li class="disabled last"><a><img src="/images/sipky_prave2_gray.png"></a></li>
+{else}
+	<li><a href="{link paginate!, 'page' => $paginator->page + 1}" class="ajax next"><img src="/images/sipka_prava_yellow.png"></a></li>
+	<li><a href="{link paginate!, 'page' => $paginator->pageCount}" class="ajax last"><img src="/images/sipky_prave2_yellow.png"></a></li>
+{/if}
+</ul>
+{/if}
+{/define}

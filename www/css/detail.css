@@ -1,0 +1,60 @@
+section#material-info img,
+section#mask-info img{
+	margin: auto;
+	max-width: 80em;
+	max-height: 40em;
+	width: 100%;
+}
+
+ul.stats li{
+	width: 33.3%;
+	text-align: center;
+}
+
+ul.stats.binary li{
+	width: 50%;
+}
+
+ul.actions li,
+ul.actions.owner li{
+	width: 20%;
+	text-align: center;
+}
+
+ul.actions.observer li{
+	width: 33.3%;
+}
+
+ul.actions.binary li{
+	width: 25%;
+}
+
+ul.tags li{
+	border-radius: 0.3em;
+	padding: 1em;
+	margin-right: 0.1em;
+	display: inline-block;
+	background: #F0F0F0;
+}
+
+table.info{
+	text-align: center;
+}
+
+a:link, a:visited { 
+    color: #000000;
+	text-decoration: none;
+    cursor: auto;
+}
+
+.nodata{
+	text-align: center;
+	font-size: 1em;
+	color: #AAA;
+	padding: 2em;
+	width: 100%;
+	background: #F0F0F0;
+	box-sizing: border-box;
+	border-radius: 0.3em;
+	margin-bottom: 4em;
+}

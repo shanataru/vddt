@@ -1,0 +1,101 @@
+{* This is the welcome page, you can delete it *}
+{block styles}
+{include parent}
+<link rel="stylesheet" href="{$basePath}/css/homepage.css">
+<link rel="stylesheet" href="{$basePath}/css/images-grid.css">
+{/block}
+{block content}
+<section id="user-info">
+    <div class="container">
+        <div class="site-info">
+            <h1>Databáze dynamických textur</h1>
+            <p>Systém pro shromažďování textur a modifikaci materiálů pomocí uživatelských spustitelných souborů.</p>
+        </div>
+        <ul class="account">
+            {if $user->loggedIn}
+                <li><a n:href="Sign:out">odhlásit se</a></li>
+                {else}
+                <li><a n:href="Sign:up">vytvořit účet</a></li>
+                <li><a n:href="Sign:in">přihlásit se</a></li>
+                {/if}
+        </ul>
+        <!--<p>Stav uživatele: {$userStatus}</p>-->
+    </div>
+</section>
+<section id="global-stats">
+    <div class="container">
+        <h2>Aktivita na serveru</h2>
+        <p>Nahrávejte foto či video materiály a zpracovávejte je online v databázi dynamických textur.</p>
+        <ul class="stats">
+            <li>{$databaseData["countProcessing"]} zpracovaných textur</li>
+            <li>{$databaseData["countBinaries"]} binárek</li>
+            <li>{$databaseData["countMasks"]} masek</li>
+            <li>{$databaseData["countMaterials"]} materiálů</li>
+        </ul>
+    </div>
+</section>
+<section id="recently-added">
+    <div class="container">
+        <h2>Changelog</h2>
+        <ol class="changelog">
+            <li>25.9.2017
+                <ul>
+                    <li>nové ikony, přepracované tabulky</li>
+                </ul>
+            </li>
+            <li>26.9.2017
+                <ul>
+                    <li>přidána podpora ajaxu</li>
+                    <li>předělané nahrávání materiálů</li>
+                    <li>rozpracované mazání materiálů (momentálně nefuguje)</li>
+                    <li>vyčištění celé datové vrstvy (vymazání duplicitních procedur, přesun těchto částí atp.)</li>
+                </ul>
+            </li>
+            <li>27.9.2017
+                <ul>
+                    <li>zmenšování náhledů na max velikost 800x600 u fotografií, videa stále chybí</li>
+                    <li>opravené počítání položek podle viditelných na některých místech (ne všech)</li>
+                    <li>přepsané Material.php, nahrávání a upravování, již funguje přidávání i mazání tagů. </li>
+                    <li>v detailu materiálu se mění obsah nabídky podle vlastníka, ošetření přístupu pro mazání a upravování (zatím hází vyjímku když se o to pokusí někdo jiný než autor)</li>
+                    <li>Rozdělané rozesílání aktivačních mailů po registraci (nedodělané, řeší se)</li>
+                    <li>dodělané mazání materiálů i s náhledy. <strong>Momentálně to funguje tak, že smažeš materiál a masky a tagy zůstanou, jen se rzpadne vazba mezi nima.</strong></li>
+                    <li>Upravená tlačítka a no-data dialogy na stránce detailu materiálu, opravené počítání masek.</li>
+                </ul>
+            </li>
+            <li>28.9.2017
+                <ul>
+                    <li>Oprava chyb v gridech (řazení, neseděla jména z databáze a v gridech) - <strong>Tato chyba se pravděpodobně bude ještě vyskytovat, není zkontrolovaná asi polovina gridů.</strong></li>
+                    <li>Nahrávání masek, zatím je spojení s materiály řešeno tak že se tam napíšou idčka za sebe s čárkou a děj se vůle boží, <strong>tohle chce předělat.</strong></li>
+                    <li>Opravené další malé věci v gridech, opět chybné namespace, taky něco v template materiálu.</li>
+                    <li>Přidané metody a konstanty do Model.php, budou se hodit ještě při nahrávání jiných věcí.</li>
+                    <li>Dodělaná aktivace účtu s odesíláním emailu.</li>
+                    <li>Dodělaná změna hesla z přihlašovací stránky.</li>
+                </ul>
+            </li>
+            <li>29.9.2017
+                <ul>
+                    <li>Formulář na změny údajů v profilu - jméno & titul, email</li>
+                    <li>Úprava masky, přidávání a odebírání materiálů v úpravě</li>
+                </ul>
+            </li>
+            <li>1.10.2017
+                <ul>
+                    <li>Mazání masky, doopravených pár drobností z dřívěji</li>
+                    <li>Nové nahrávání binárek, úprava binárek.</li>
+                </ul>
+            </li>
+        </ol>
+
+        <h2>TODO's aneb co bylo řešeno a nedoděláno</h2>
+        <ol class="todos">
+            <li>Masky - nahrávání, detail, úprava, připojení k masce</li>
+            <li>Tagy - javascriptová interaktivní věc pro přidávání a mazání tagů</li>
+            <li>Akční tlačítka - styly - funguje to ale je to blbě udělané, trochu opravit by to chtělo...</li>
+            <li>Sjednocení názvu proměnných - často se vyskytují členské proměnné co obsahují stejná data, ale jmenují se mezi třídami zbytečně jinak.</li>
+            <li>Mail - vyhezčení</li>
+            <li>Vyhledávání - chybí vše (tj Search.php, SearchPresenter.php, nějaké gridy možná, latéčka...)</li>
+            <li>Komponenta na přidávání materiálů k maskám a naopak</li>
+            <li>Zpracování Processing.php, presenter, rozhraní na spouštění atd.</li>
+        </ol>
+    </div>
+</section>

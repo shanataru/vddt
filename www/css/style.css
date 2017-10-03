@@ -1,0 +1,142 @@
+/*color: #B2A08D;
+color: #FFFEFC;
+color: #FFF1E3;
+color: #7BA5B2;
+color: #E3F8FF;*/
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Raleway');
+
+html, body{
+	margin: 0;
+	padding: 0;
+	font-family: 'Raleway', sans-serif;
+	font-weight: 300;
+}
+
+/*form:not(.registration) label{
+	display: none;
+}
+
+form.registration label{
+	display: block;
+	padding: 0.75em 1em;
+}*/
+
+a{
+	text-decoration: none;
+	color: #000;
+}
+
+form label{
+	display: block;
+}
+
+form label[for="search"]{
+	display: none;
+}
+
+form ol{
+	list-style: none;
+}
+
+form ol li{
+	margin: 2em 0;
+}
+
+input{
+	border-radius: 0.3em;
+	font-size: 1em;
+	background: #EEE;
+	color: #333;
+	padding: 0.75em 1em;
+	box-sizing: border-box;
+	border: none;
+}
+
+select {
+	font-size: 1em;
+	padding: 0.75em 1em;
+}
+
+.tags li{
+	display: inline-block;
+	background: #EEE;
+	border-radius: 0.3em;
+	padding: 0.75em 1em;
+	margin: 0 0.5em 0.5em 0;
+}
+
+textarea{
+	border-radius: 0.3em;
+	font-size: 1em;
+	background: #EEE;
+	color: #333;
+	padding: 0.75em 1em;
+	box-sizing: border-box;
+	border: none;
+	min-width: 20em;
+}
+
+h1, h2, h3, h4, h5{
+	font-family: 'Raleway', sans-serif;
+	font-weight: 300;
+}
+
+p, table{
+	font-family: 'Open Sans', sans-serif;
+}
+
+h1{
+	font-size: 1.5em;
+	margin: 1em 0;
+	font-weight: normal;
+	/*letter-spacing: 0.1em;*/
+
+}
+
+h2{
+	font-size: 1.3em;
+	margin: 1em 0;
+	/*letter-spacing: 0.1em;*/
+
+}
+
+span.username{
+	color: #AAA;
+}
+
+span.username:before{
+	content: "::";
+	display: inline-block;
+/*	padding: 0 0.1em;*/
+}
+
+section{
+	padding: 4em 2em 0em 2em;
+	width: 100%;
+	box-sizing: border-box;
+	/*border-bottom: 1px solid #AAA;*/
+}
+
+section > .container{
+	max-width: 60em;
+	margin: auto;
+	overflow: auto;
+}
+
+footer{
+	height: 15em;
+}
+
+[onclick] {
+    cursor: pointer;
+}
+
+div.flash{
+	background: #F0F0F0;
+	border-radius: 0.3em;
+	padding: 1em;
+	width: 100%;
+	box-sizing: border-box;
+	max-width: 60em;
+	margin: 2em auto;
+}

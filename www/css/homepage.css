@@ -1,0 +1,60 @@
+
+
+#user-info{
+	/*background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-image: url('/images/homepage4.jp2');*/
+	padding: 10em 2em;
+	background: #FAFAFA;
+	/*color: #EEE;
+	border-bottom: 0.1em solid #CCC*/
+}
+
+#user-info div.site-info{
+
+}
+
+section#global-stats h2, 
+section#global-stats p, 
+section#recently-added h2,
+section#recently-added p, 
+section#system-status h2,
+section#system-status p{
+	text-align: center;
+}
+
+ul.stats li{
+	width: 25%;
+}
+
+section#system-status dl dd{
+	padding: 1em;
+	float: left;
+	width: 80%;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+section#system-status dl dt{
+	padding: 1em;
+	float: left;
+    width: 20%;
+    text-align: right;
+	background: #EEE;
+	box-sizing: border-box;
+}
+
+section#system-status dl{
+	overflow: auto;
+}
+
+ol.todos,
+ol.changelog{
+	text-align: left;
+}
+
+ol.changelog {
+	padding: 0;
+    list-style: none;
+}

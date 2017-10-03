@@ -1,0 +1,128 @@
+
+table tr:first-child th:first-child{
+    border-top-left-radius: 0.3em;
+}
+
+table tr:first-child th:last-child {
+    border-top-right-radius: 0.3em;
+}
+
+table tr:last-child td:first-child {
+    border-bottom-left-radius: 0.3em;
+}
+
+table tr:last-child td:last-child {
+    border-bottom-right-radius: 0.3em;
+}
+
+table{
+	text-align: left;
+	border-spacing: 0;
+	border-collapse: collapse;
+	width: 100%;
+	table-layout: fixed;
+}
+
+table tr{
+	border-radius: 0.5em;
+	background: #F0F0F0;
+	padding: 0.1em;
+	border-bottom: 0.1em solid #FFF;
+}
+
+table tr th{
+	padding: 0.5em 2em;
+	font-weight: normal;
+	color: #AAA;
+}
+
+table tr td{
+	padding: 1em 2em;
+}
+
+table tr.in-progress{
+	background: #F0F0F0;
+}
+
+table tr.canceled{
+	background: #faf2e9;
+}
+
+table tr.completed{
+	background: #f1fce2;
+}
+
+table tr .user,
+table tr .texture,
+table tr .binary,
+table tr .mask{
+	width: 20%;
+}
+
+table tr .date{
+	color: #AAA;
+	text-align: right;
+	width: 20%;
+}
+
+table tr .status,
+table tr .size{
+	text-align: right;
+	width: 15%;
+}
+
+table tr .private{
+	background: #DDD;
+	width: 5%;
+}
+
+table tr .format{
+	width: 12%;
+}
+
+table tr .resolution{
+	width: 16%;
+}
+
+table tr .name{
+	width: 20%;
+}
+
+table tr th.private{
+	content: "";
+}
+
+table tr td.preview{
+	background: #CCC;
+	width: 30%;
+	height: 5em;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+table tr td.more{
+	width: 100%;
+	text-align: center;
+	color: #AAA;
+	background: #F5F5F5;
+}
+
+table tr td.more:hover{
+	background-color: #DDD;
+	color: #000000
+}
+
+table tr.line:hover{
+	background-color: #DDD;
+	color: #000000
+}
+
+
+table tfoot tr {
+	background: none;
+}
+
+table tfoot{
+	vertical-align: middle;
+}

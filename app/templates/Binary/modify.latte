@@ -1,0 +1,62 @@
+{* Latte template *}
+{block styles}
+    {include parent}
+    <link rel="stylesheet" href="{$basePath}/css/form.css">
+{/block}
+{block content}
+
+<section id="binary-form">
+    <div class="container">
+        <h1>Úprava binárky</h1>
+        <p>Změňte položky, které chcete vyměnit a ponechte ostatní položky. Všechny změny se projeví ihned po uložení.</p>
+        {form modifyMaskForm}
+            <fieldset>
+                <legend>Binárka</legend>
+                <ol class="modify-form">
+                    <li class="modify-part name">
+                        <div>
+                            <h2>{label name/}</h2>
+                             <dl>
+                                <dt>{label name/}</dt>
+                                <dd>{input name}</dd>
+                            </dl>
+                            <p>Vyberte dobré jméno pro váši binárku, později ji podle něj budete moci najít, proto je dobrý krátký a unikátní název. Nebojte se o duplicitní jména na serveru, o to se postaráme, vaše jméno zůstane nezměněné.</p>
+                        </div>
+                    </li>
+                    <li class="modify-part detail">
+                        <ol>
+                            <li id="language">
+                                <h2>{label language/}</h2>
+                                <p>Zadejte v jakém jazyce je tato binárka.</p>
+                                <dl>
+                                    <dt>{label language/}</dt>
+                                    <dd>{input language}</dd>
+                                </dl>
+                            </li>
+                            <li id="privacy">
+                                <h2>{label privacy/}</h2>
+                                <p>Soukromé binárky vidíte a můžete používat pouze vy, veřejné jsou takto přístupné pro kohokoliv.</p>
+                                <dl>
+                                    <dt>{label privacy/}</dt>
+                                    <dd>{input privacy}</dd>
+                                </dl>
+                            </li>
+                        </ol>
+                    </li>
+                    <li class="modify-part note">
+                        <h2>{label note/}</h2>
+                        <p>Připojte poznámku, může obsahovat dopňující informace k binárce pro ostatní uživatele.</p>
+                        <dl>
+                            <dt>{label note/}</dt>
+                            <dd>{input note}</dd>
+                        </dl>
+                    </li>
+                    <li class="modify-part submit">
+                        <p>Hotovo!</p>
+                        {input send}
+                    </li>           
+                </ol>
+            </fieldset>
+        {/form}
+    </div>
+</section>

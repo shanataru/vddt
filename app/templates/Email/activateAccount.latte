@@ -1,0 +1,30 @@
+{* Latte template *}
+
+<html>
+<head>
+	<title>VDDT - aktivace účtu</title>
+</head>
+
+<body>
+<div width="100%" align="center">
+
+<a href="http://vddt.miladamoudra.com/"><img src="http://vddt.miladamoudra.com/www/images/planeta.png" title="VDDT" alt="VDDT" /></a>
+projekt databáze dynamických textur.
+<br />
+<br />
+<br />
+
+
+Pro aktivaci Vašeho účtu s uživatelským jménem "{$values['email']}" klikněte na následující odkaz.
+<br />
+
+<h3><a href="{link Sign:activate 'link'=>$values['link']}">Ověření a aktivace</a></h3>
+<br />
+
+
+	<p>Pokud jste se na stránce VDDT neregistrovali, na link neklikejte.
+		Váš email bude z databáze vymazán.</p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+{* Latte template *}
+
+{block content}
+<section id="user-login">
+    <div class="container">
+		<h1>Registrace</h1>
+		{form signUpForm}
+				<fieldset>
+  					<legend>Registrace nového uživatele</legend>
+					<ol>
+						<li>{label email/}{input email}</li>
+						<li>{label degree/}{input degree}</li>
+						<li>{label name/}{input name}</li>
+						<li>{label surname/}{input surname}</li>
+						<li>{label password/}{input password}</li>
+						<li>{label password2/}{input password2}</li>
+						<li>{input send}</li>
+					</ol>
+					
+                </fieldset>
+		{/form}
+		<ul>
+			<a n:href="Homepage:default"><li>Zpět na hlavní stránku</li></a>
+		</ul>
+	</div>
+</section>

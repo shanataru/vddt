@@ -1,0 +1,164 @@
+fieldset{
+	margin: 1em 0;
+	border: none;
+	padding: 0;
+}
+
+legend{
+	display: none;
+}
+
+ol.add-form,
+ol.modify-form{
+	padding: 0;
+	margin: 0;
+}
+
+ol.add-form li,
+ol.modify-form li{
+	padding: 2em 0;
+	margin: 0;
+	display: block;
+}
+
+ol.add-form li.add-part dl
+ol.modify-form li.modify-part dl{
+	
+}
+
+ol.add-form li.add-part dl dt,
+ol.modify-form li.modify-part dl dt{
+	display: none;
+}
+
+ol.add-form li.add-part dl dd,
+ol.modify-form li.modify-part dl dd{
+	margin: 0	
+}
+
+ol.add-form li.add-part dl dd input,
+ol.add-form li.add-part dl dd textarea,
+ol.add-form li.add-part input,
+ol.modify-form li.modify-part dl dd input,
+ol.modify-form li.modify-part dl dd textarea,
+ol.modify-form li.modify-part input{
+	background: #F0F0F0;
+}
+
+ol.add-form li.add-part.detail,
+ol.modify-form li.modify-part.detail{
+	overflow: auto;
+}
+
+ol.add-form li.add-part.detail ol,
+ol.modify-form li.modify-part.detail ol{
+	width: 100%;
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	display: flex;
+}
+
+
+ol.add-form li.add-part.detail li,
+ol.modify-form li.modify-part.detail li {
+	padding: 0 1em;
+	box-sizing: border-box;
+	background: #F0F0F0;
+	border-radius: 0.3em;
+	float: left;
+}
+
+ol.add-form li.add-part.detail li#move,
+ol.modify-form li.modify-part.detail li#move{
+	margin: 0 1.5%;
+}
+
+#mask-form ol.add-form li.add-part.detail li#privacy,
+#mask-form ol.modify-form li.modify-part.detail li#privacy,
+#binary-form ol.add-form li.add-part.detail li#privacy,
+#binary-form ol.modify-form li.modify-part.detail li#privacy{
+	margin: 0 0 0 1%;
+}
+
+#mask-form ol.add-form li.add-part.detail li#usage,
+#mask-form ol.modify-form li.modify-part.detail li#usage,
+#binary-form ol.add-form li.add-part.detail li#language,
+#binary-form ol.modify-form li.modify-part.detail li#language{
+	margin: 0 1% 0 0;
+}
+
+ol.add-form li.add-part.detail li#take select,
+ol.add-form li.add-part.detail li#move select,
+ol.add-form li.add-part.detail li#language input,
+ol.modify-form li.modify-part.detail li#take select,
+ol.modify-form li.modify-part.detail li#move select,
+ol.modify-form li.modify-part.detail li#language input {
+	width: 100%;
+	background: #FFF;
+}
+
+ol.add-form li.add-part.name,
+ol.add-form li.add-part.file,
+ol.modify-form li.modify-part.name{
+	overflow: auto;
+}
+
+ol.modify-form li.modify-part.name{
+	display: flex;
+}
+	
+ol.add-form li.add-part.name input,
+ol.add-form li.add-part.file input{
+	width: 47%;
+	margin-right: 3%;
+	float: left;
+}
+
+ol.add-form li.add-part.name p,
+ol.add-form li.add-part.file p {
+	width: 50%;
+	float: left;
+	margin: 0;
+}
+
+ol.modify-form li.modify-part.name div{
+	float: left;
+	width: 50%;
+}
+
+ol.modify-form li.modify-part.name h2,
+ol.modify-form li.modify-part.name input,
+ol.modify-form li.modify-part.name p{
+	width: 94%;
+	margin-left: 6%;
+}
+
+ol.add-form li.add-part.name,
+ol.modify-form li.modify-part.name{
+	padding-bottom: 0;
+}
+
+ol.add-form li.add-part.file,
+ol.modify-form li.modify-part.file{
+	padding-top: 0;
+}
+
+ol.add-form li.add-part.tags textarea,
+ol.add-form li.add-part.note textarea,
+ol.modify-form li.modify-part.tags textarea,
+ol.modify-form li.modify-part.note textarea{
+	width: 100%;
+	height: 6em;
+    resize: none;
+}
+
+ol.modify-form li.modify-part.name .img-preview{
+	width: 50%;
+	float: left;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+	border-radius: 0.3em;
+}
+

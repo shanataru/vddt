@@ -1,0 +1,88 @@
+{* Latte template *}
+{block styles}
+{include parent}
+	<link rel="stylesheet" href="{$basePath}/css/detail.css">
+{/block}
+{block content}
+
+<section id="material-info">
+    <div class="container">
+        <ul class="stats">
+            <li>{$materialData["countProcessing"]} zpracování</li>
+            <li>{$materialData["countMask"]} navázaných masek</li>
+            <li>materiál</li>
+        </ul>
+        <img src="{$materialData['previewPath']}" />
+        <ul class="actions {if $materialData['owner']}owner{else}observer{/if}">
+            <li><a href="">zpracovat</a></li>
+            <li><a href="">přidat masku</a></li>
+            {if $materialData['owner']}<li><a n:href="Material:modify materialId => $materialId">upravit</a></li>{/if}
+            <li><a href="{$materialData["filepath"]}" download>stáhnout</a></li>
+            {if $materialData['owner']}<li><a n:href="Material:delete materialId => $materialId">smazat</a></li>{/if}
+        </ul>
+    </div>
+</section>
+<section id="statistics">
+    <div class="container">
+        <h2>Informace</h2>
+        <table class="info">
+            <tr>
+                <th>název souboru</th>
+                <th>rozměry</th>	
+                <th>formát</th>
+                <th>velikost</th>
+                <th>soukromí</th>
+            </tr>
+            <tr>
+                <td>{$materialData['filename']}</td>
+                <td>{$materialData['dimensions']}</td>
+                <td>{$materialData['format']}</td>
+                <td>{$materialData['filesize']}</td>
+                <td>{$materialData['privacy']}</td>
+            </tr>
+        </table>
+        <ul class="tags">
+            {foreach $materialData['tags'] as $key => $value}
+                <li>{$value}</li>
+		{/foreach}
+        </ul>
+        <table class="info">
+            <tr>
+                <th>typ média</th>
+                <th>pohyb kamery</th>
+                <th>typ záběru</th>
+                <th>datum nahrání</th>
+                <th>vlastník</th>
+            </tr>
+            <tr>
+                <td>{$materialData['mediaType']}</td>
+                <td>{$materialData['move']}</td>
+                <td>{$materialData['take']}</td>
+                <td>{$materialData['uploadTime']}</td>
+                <td>{$materialData['author']}</td>
+            </tr>
+        </table>
+        <h2>Popis</h2>
+        <p>{$materialData['note']}</p>
+    </div>
+</section>
+
+<section id="data">
+    <div class="container">
+        <h2>Zpracování</h2>
+        {if $materialData["countProcessing"] == 0}
+            <div class="nodata">Žádná data</div>
+        {else}
+            {control materialProcessingGrid}
+        {/if}
+    </div>
+
+    <div class="container">
+        <h2>Masky</h2>
+        {if $materialData["countMask"] == 0}
+            <div class="nodata">Žádná data</div>
+        {else}
+            {control materialMaskGrid}
+        {/if}
+    </div>
+</section>

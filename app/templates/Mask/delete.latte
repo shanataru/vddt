@@ -1,0 +1,36 @@
+{* Latte template *}
+{block styles}
+{include parent}
+	<link rel="stylesheet" href="{$basePath}/css/delete.css">
+{/block}
+{block content}
+
+<section>
+    <div class="container">
+		<h1>Smazání masky</h1>
+		<div id="mask-info">
+		<div class="img-preview" style="background-image: url({$maskData['previewPath']})"></div>
+		<dl>
+			<dt>název souboru</dt>
+			<dd>{$maskData['filename']}</dd>
+			<dt>rozměry</dt>
+			<dd>{$maskData['dimensions']}</dd>
+			<dt>typ média</dt>
+			<dd>{$maskData['mediaType']}</dd>
+			<dt>datum nahrání</dt>
+			<dd>{$maskData['uploadTime']}</dd>
+		</dl>
+		</div>
+		{if $maskData["countProcessing"] < 1}
+		<p>Tato maska nemá dosud žádné zpracování, můžete ji tedy úplně odstranit z databáze. Opravdu chcete smazat tuto masku?</p>
+		<ul class="actions">
+			<li><a n:href="Mask:deleteComplete maskId => $maskId">Ano</a></li>
+			<li><a n:href="Mask:detail maskId => $maskId">Ne</a></li>
+		</ul>
+		{else}
+		<p>Oops, vypadá to, že na tuto masku jsou již navázána nějaká zpracování a jejím smazáním byste připravili ostatní uživatele o jejich data.</p>
+		{/if}
+	</div>
+</section>
+
+		

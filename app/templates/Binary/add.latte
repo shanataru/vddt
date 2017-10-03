@@ -1,0 +1,68 @@
+{* Latte template *}
+{block styles}
+    {include parent}
+    <link rel="stylesheet" href="{$basePath}/css/form.css">
+{/block}
+{block content}
+
+<section id="binary-form">
+    <div class="container">
+        <h1>Přidání Binárky</h1>
+        <p>Binárka je spustitelný soubor, pomocí kterého se později provádí zpracovaní.  Všechny informace krom samotného souboru je možné později změnit.</p>
+        {form addBinaryForm}
+            <fieldset>
+                <legend>Binárka</legend>
+                <ol class="add-form">
+                    <li class="add-part name">
+                        <h2>{label name/}</h2>
+                        <dl>
+                            <dt>{label name/}</dt>
+                            <dd>{input name}</dd>
+                        </dl>
+                    <p>Vyberte dobré jméno pro vaši binárku, později ji podle něj budete moci najít, proto je dobrý krátký a unikátní název. Nebojte se o duplicitní jména na serveru, o to se postaráme, vaše jméno zůstane nezměněné.</p>
+                    </li>
+                    <li class="add-part file">
+                        <h2>{label file/}</h2>
+                        <dl>
+                            <dt>{label file/}</dt>
+                            <dd>{input file}</dd>
+                        </dl>
+                    <p>Zvolte prosím soubor, který chcete nahrát.</p>
+                    </li>
+                    <li class="add-part detail">
+                        <ol>
+                            <li id="language">
+                                <h2>{label language/}</h2>
+                                <p>Zadejte v jakém jazyce je tato binárka.</p>
+                                <dl>
+                                    <dt>{label language/}</dt>
+                                    <dd>{input language}</dd>
+                                </dl>
+                            </li>
+                            <li id="privacy">
+                                <h2>{label privacy/}</h2>
+                                <p>Soukromé binárky vidíte a můžete používat pouze vy, veřejné jsou takto přístupné pro kohokoliv.</p>
+                                <dl>
+                                    <dt>{label privacy/}</dt>
+                                    <dd>{input privacy}</dd>
+                                </dl>
+                            </li>
+                        </ol>
+                    </li>
+                    <li class="add-part note">
+                        <h2>{label note/}</h2>
+                        <p>Připojte poznámku, může obsahovat dopňující informace k binárce pro ostatní uživatele.</p>
+                        <dl>
+                            <dt>{label note/}</dt>
+                            <dd>{input note}</dd>
+                        </dl>
+                    </li>
+                    <li class="add-part submit">
+                        <p>Hotovo!</p>
+                        {input send}
+                    </li>           
+                </ol>
+            </fieldset>
+        {/form}
+    </div>
+</section>

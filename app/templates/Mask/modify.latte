@@ -1,0 +1,72 @@
+{* Latte template *}
+{block styles}
+    {include parent}
+    <link rel="stylesheet" href="{$basePath}/css/form.css">
+{/block}
+{block content}
+
+<section id="mask-form">
+    <div class="container">
+        <h1>Úprava masky</h1>
+        <p>Změňte položky, které chcete vyměnit a ponechte ostatní položky. Všechny změny se projeví ihned po uložení.</p>
+        {form modifyMaskForm}
+            <fieldset>
+                <legend>Materiál</legend>
+                <ol class="modify-form">
+                    <li class="modify-part name">
+                        <div class="img-preview" style="background-image: url({$maskData['previewPath']})"></div>
+                        <div>
+                            <h2>{label name/}</h2>
+                             <dl>
+                                <dt>{label name/}</dt>
+                                <dd>{input name}</dd>
+                            </dl>
+                            <p>Vyberte dobré jméno pro váši masku, později ji podle něj budete moci najít, proto je dobrý krátký a unikátní název. Nebojte se o duplicitní jména na serveru, o to se postaráme, vaše jméno zůstane nezměněné.</p>
+                        </div>
+                    </li>
+                    <li class="modify-part detail">
+                        <ol>
+                            <li id="usage">
+                                <h2>{label usage/}</h2>
+                                <p>Zvolte, jestli se jedná o univerzální masku, nebo ji chcete přiřadit k jednomu nebo více materiálům.</p>
+                                <p>Upozornění - pokud změníte druh na univerzální, masce budou odebrány všechny přiřazené materiály.</p>
+                                <dl>
+                                    <dt>{label usage/}</dt>
+                                    <dd>{input usage}</dd>
+                                </dl>
+                            </li>
+                            <li id="privacy">
+                                <h2>{label privacy/}</h2>
+                                <p>Soukromé masky vidíte a můžete používat pouze vy, veřejné jsou takto přístupné pro kohokoliv.</p>
+                                <dl>
+                                    <dt>{label privacy/}</dt>
+                                    <dd>{input privacy}</dd>
+                                </dl>
+                            </li>
+                        </ol>
+                    </li>
+                    <li class="modify-part material" id="material">
+                        <h2>{label material/}</h2>
+                        <p>Zadejte id materiálů, ke kterým chcete tuto masku přiřadit. Jako oddělovač použijte čárku.</p>
+                        <dl>
+                            <dt>{label material/}</dt>
+                            <dd>{input material}</dd>
+                        </dl>
+                    </li>
+                    <li class="modify-part note">
+                        <h2>{label note/}</h2>
+                        <p>Připojte poznámku, může obsahovat dopňující informace k masce pro ostatní uživatele.</p>
+                        <dl>
+                            <dt>{label note/}</dt>
+                            <dd>{input note}</dd>
+                        </dl>
+                    </li>
+                    <li class="modify-part submit">
+                        <p>Hotovo!</p>
+                        {input send}
+                    </li>           
+                </ol>
+            </fieldset>
+        {/form}
+    </div>
+</section>
