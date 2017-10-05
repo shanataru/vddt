@@ -1,0 +1,11 @@
+.gitignore
+*/.gitignore      # ignore files in sub directories
+*/.gitkeep
+.git-ftp-ignore
+.git-ftp-include
+.gitlab-ci.yml
+log/*
+temp/*
+app/config/config.local.neon
+www/data/*
+.DS_Store
