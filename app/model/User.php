@@ -249,14 +249,14 @@ class User extends AM
 
         if($userNew->comparePasswords($values->password)) {//vraci true/false
             $existingEmail = $this->userFacade->findByEmail($values->email);
-            if ($existingEmail && $existingEmail->getId() != $this->user->id) {
+            if ($existingEmail && $existingEmail->getId() != $this->user->id) { //pokud email jiz ma ucet a tento ucet nema id prave prihlaseneho uzivatele
                 $form->getPresenter()->flashMessage('Údaje se nepodařilo změnit, nově zadaný email už má registrovaný účet.');
                 $form->getPresenter()->redirect('Profile:modify');
             }
         }
         else{
             # odešleme zprávu o neúspěchu
-            $form->getPresenter()->flashMessage('Údaje se nepodařilo změnit, zadali jste správné heslo? '.$values->password);
+            $form->getPresenter()->flashMessage('Údaje se nepodařilo změnit, zadali jste správné heslo?');
             $form->getPresenter()->redirect('Profile:modify');
         }
 
@@ -281,7 +281,7 @@ class User extends AM
             if (!$user = $this->userFacade->findByEmail($values->email)) {
                 #nový uživatel nesmí mít prázdné heslo!
                 if (empty($values->password)) {
-                    throw new \InvalidArgumentException('nový uživatel nemůže mít prázdné heslo');
+                    throw new \InvalidArgumentException('Nový uživatel nemůže mít prázdné heslo');
                 }
 
                 try{
