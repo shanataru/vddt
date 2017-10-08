@@ -81,7 +81,7 @@ class Mask extends AM {
         $data["format"] =  $mask->getFormat();
         $data["filesize"] = $this->filesizeFormatted($mask->fileSize);
         $data["privacy"] =  ($mask->isPublic()) ? "veřejné" : "soukromé";
-        $data["mediaType"] =  "-";
+        $data["mediaType"] = $this->getMediaType($mask->getFormat());
         $data["uploadTime"] =  $mask->uploadedAt()->format('d.m.Y H:i');
         $data["author"] = $author->getName();
         $data["note"] = $mask->getNote();
