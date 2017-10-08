@@ -88,7 +88,7 @@ class Model {
     protected function createName($fileExt)
     {
         do {
-            $filelName = uniqid(rand(0, 20), TRUE) . $fileExt;
+            $filelName = uniqid(rand(0, 20), TRUE) . "." . $fileExt;
             $pathPreview = self::PREVIEWPATH . $filelName;
         } while (file_exists($pathPreview));
         
@@ -98,7 +98,7 @@ class Model {
     /* Oddělení přípony */
     protected function getFormat($file)
     {
-        return strtolower(mb_substr($file->getSanitizedName(), strrpos($file->getSanitizedName(), ".")));
+        return strtolower(mb_substr($file->getSanitizedName(), strrpos($file->getSanitizedName(), ".") + 1));
     }
 
     /* Zjištění typu média z přípony */
