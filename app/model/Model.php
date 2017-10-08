@@ -102,8 +102,7 @@ class Model {
     }
 
     /* Zjištění typu média z přípony */
-    protected  function  getMediaType($file){
-        $format = $this->getFormat($file);
+    protected  function  getMediaType($format){
         $this->getPresenter()->flashMessage("Format ".$format); //for debug only
         $video = array("avi", "mp4");
         $image = array("jpeg", "jpg", "jpe", "jif", "jfif", "jfi", "png", "gif", "ppm", "bmp", "svg", "tiff", "tif");

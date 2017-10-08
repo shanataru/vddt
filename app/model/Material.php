@@ -107,7 +107,7 @@ class Material extends AM {
         $data["dimensions"] = $material->getWidth() . "×" . $material->getHeight();
         $data["format"] =  $material->getFormat();
         $data["privacy"] =  ($material->isPublic()) ? "veřejné" : "soukromé";
-        $data["mediaType"] =  $material->getMediaType();
+        $data["mediaType"] =  $this->getMediaType($material->getFormat());
         $data["uploadTime"] =  $material->uploadedAt()->format('d.m.Y H:i');
         $data["note"] = $material->getNote();
         $data["owner"] = $this->checkSession($material->author);
