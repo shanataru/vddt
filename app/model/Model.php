@@ -101,4 +101,24 @@ class Model {
         return strtolower(mb_substr($file->getSanitizedName(), strrpos($file->getSanitizedName(), ".")));
     }
 
+    /* Zjištění typu média z přípony */
+    protected  function  getMediaType($file){
+        $format = $this->getFormat($file);
+        $this->getPresenter()->flashMessage("Format ".$format); //for debug only
+        $video = array("avi", "mp4");
+        $image = array("jpeg", "jpg", "jpe", "jif", "jfif", "jfi", "png", "gif", "ppm", "bmp", "svg", "tiff", "tif");
+        $isVideo = "video";
+        $isPicture = "image";
+        $isUnknown = "neznámý";
+        if(in_array($format, $video)){
+            return $isVideo;
+        }
+        elseif(in_array($format, $image)){
+            return $isPicture;
+        }
+        else{
+            return $isUnknown;
+        }
+    }
+
 }
