@@ -73,10 +73,14 @@ class Material extends AM {
      * "materials", "processings", "masks", "binaries", tedy neco jako
      * data["materials"] = [ material1, material2 ... ]
      * data["masks"] = [ mask1, mask2 ... ]
+     *
+     * possibly helpful links (hlavne pro programovani ve fasadach):
+     * http://docs.doctrine-project.org/projects/doctrine-orm/en/latest/reference/native-sql.html
+     * http://docs.doctrine-project.org/projects/doctrine-dbal/en/latest/reference/query-builder.html (tohle mi silne pripomina nette database ale bacha neni to ORM tak to mozna nepujde)
 	 *
 	 * Prohledava materialy, masky, zpracovani a binarky
      */
-    public function searchAll($query)
+    public function searchAll($query)//nevim jestli by se ta query nemela tvorit az tady v modelu misto v presenteru ???
     {
 
     }
