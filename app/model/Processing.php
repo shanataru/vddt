@@ -72,7 +72,7 @@ class Processing extends AM {
 
     	if ($material == NULL)
     	{
-    		$material = $this->materialsFacade->findById($item->mask);
+    		$material = $this->materialsFacade->findById($item->material);
     	}
 
     	$gridItem->material = $material->name;
@@ -87,7 +87,7 @@ class Processing extends AM {
 
     	if ($binary == NULL)
     	{
-    		$binary = $this->binariesFacade->findById($item->mask);
+    		$binary = $this->binariesFacade->findById($item->binary);
     	}
 
     	$gridItem->binary = $binary->name;
