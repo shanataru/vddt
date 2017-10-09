@@ -127,7 +127,7 @@ class Processing extends AM {
     * -------------------------------------------------------------------- */
 
 
-    public function getDataAllByAuthor($order, Paginator $paginator = NULL)
+    public function prepareDataAllByAuthor($order, Paginator $paginator = NULL)
     {
 		$user = $this->user->id;
 		$selection = $this->processingFacade->findAllByAuthor($user, $order, $paginator);
