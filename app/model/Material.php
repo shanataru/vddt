@@ -41,9 +41,6 @@ class Material extends AM {
     /** @var AD\Tags */
     private $tagFacade;
 
-    /** @var AD\MaskTextures */
-    private $maskTextureFacade;
-
     /** @var AT\MaterialTable */
     private $materialTable;
 
@@ -55,7 +52,7 @@ class Material extends AM {
      * -------------------------------------------------------------------- */
     
 
-    public function __construct(FO\MaterialForm $materialForm, AD\Materials $materials, AD\Previews $previews, AD\Processings $processings, AD\Masks $masks, AD\CameraMoves $cameraMoves, AD\CameraTakes $cameraTakes, AD\Tags $tags, AD\MaskTextures $maskTextures, AD\Users $users, AT\MaterialTable $materialTable, User $user)
+    public function __construct(FO\MaterialForm $materialForm, AD\Materials $materials, AD\Previews $previews, AD\Processings $processings, AD\Masks $masks, AD\CameraMoves $cameraMoves, AD\CameraTakes $cameraTakes, AD\Tags $tags, AD\Users $users, AT\MaterialTable $materialTable, User $user)
     {
         parent::__construct($user);
         $this->materialForm = $materialForm;
@@ -68,7 +65,6 @@ class Material extends AM {
         $this->cameraTakeFacade = $cameraTakes;
         $this->materialTable = $materialTable;
         $this->tagFacade = $tags;
-        $this->maskTextureFacade = $maskTextures;
         $this->user = $user;
     }
 

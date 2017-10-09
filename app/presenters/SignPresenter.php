@@ -12,7 +12,7 @@ class SignPresenter extends BasePresenter {
 
     protected function createComponentSignInForm() {
         $form = $this->user->signInForm();
-        $form->onSuccess[] = array($this, 'redirectHome');
+        $form->onSuccess[] = array($this, 'redirectProfile');
         return $form;
     }
 
@@ -41,8 +41,11 @@ class SignPresenter extends BasePresenter {
     }
 
     public function redirectHome($form) {
-        // po uspěšném přihlášení přesměrujeme na homepage
         $this->getPresenter()->redirect('Homepage:default');
+    }
+
+    public function redirectProfile($form) {
+        $this->getPresenter()->redirect('Profile:detail');
     }
 
 }
