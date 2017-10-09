@@ -5,14 +5,14 @@
 {/block}
 {block content}
 
-<section id="mask-info">
+<section id="preview">
     <div class="container">
-        <ul class="stats">
+        <ul class="info">
             <li>{$maskData['countProcessing']} zpracování</li>
             <li>{$maskData['usage']}</li>
             <li>maska</li>
         </ul>
-        <img src="{$maskData['previewPath']}" />
+        <div class="preview" style="background-image: url({$maskData['previewPath']})"></div>
         <ul class="actions {if $maskData['owner']}owner{else}observer{/if}">
             <li><a href="">použít</a></li>
             <li><a href="">přidat k textuře</a></li>
@@ -22,7 +22,7 @@
         </ul>
     </div>
 </section>
-<section id="statistics">
+<section id="data">
     <div class="container">
         <h2>Informace</h2>
         <table class="info">
@@ -53,11 +53,16 @@
                 <td>{$maskData['author']}</td>
             </tr>
         </table>
-        <p>{$maskData['note']}</p>   
+         <h2>Popis</h2>
+        {if $maskData['note'] == "" }
+            <div class="nodata">Žádná data</div>
+        {else}
+            <p class="text">{$maskData['note']}</p>
+        {/if}
     </div>
 </section>
 
-<section id="data">
+<section id="linked">
     <div class="container">
          <h2>Zpracování</h2>
         {if $maskData["countProcessing"] == 0}
