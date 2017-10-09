@@ -96,27 +96,27 @@ class Processing extends AM {
 
     public function setupAttributes($item)
     {
-    	if ($gridItem->public)
+    	if ($item->public)
     	{
-			$gridItem->public = 'ano';
+			$item->public = 'ano';
 		}
 		else
 		{
-			$gridItem->public = 'ne';
+			$item->public = 'ne';
 		}
 		  
-		$gridItem->statusNo = $gridItem->status;
+		$item->statusNo = $item->status;
 		
-		switch ($gridItem->status)
+		switch ($item->status)
 		{
 		    case 1:
-		        $gridItem->status = 'pracuje';
+		        $item->status = 'pracuje';
 		        break;
 		    case 2:
-		        $gridItem->status = 'čeká na potvrzení';
+		        $item->status = 'čeká na potvrzení';
 		        break;
 		    default:
-		        $gridItem->status = 'hotovo';
+		        $item->status = 'hotovo';
 		        break;
 		}
     }
