@@ -56,7 +56,7 @@ class Processing extends AM {
     	if (!$item->mask)
     		return;
 
-    	if ($material == NULL)
+    	if ($mask == NULL)
     	{
     		$mask = $this->maskFacade->findById($item->mask);
     	}
