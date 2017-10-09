@@ -5,13 +5,13 @@
 {/block}
 {block content}
 
-<section id="binary-info">
+<section id="preview">
     <div class="container">
-        <ul class="stats binary">
+        <ul class="info">
             <li>{$binaryData['countProcessing']} zpracování</li>
             <li>binárka</li>
         </ul>
-        <ul class="actions binary">
+        <ul class="actions {if $materialData['owner']}owner{else}observer{/if}">
             <li><a href="">spustit</a></li>
             {if $binaryData['owner']}<li><a n:href="Binary:modify binaryId => $binaryId">upravit</a></li>{/if}
             <li><a href="">stáhnout</a></li>
@@ -19,7 +19,7 @@
         </ul>
     </div>
 </section>
-<section id="statistics">
+<section id="data">
     <div class="container">
         <h2>Informace</h2>
         <table class="info">
@@ -46,15 +46,24 @@
                 <td>{$binaryData['author']}</td>
             </tr>
         </table>
-        <p>{$binaryData['note']}</p>
+
+        <h2>Popis</h2>
+        {if $binaryData['note'] == "" }
+            <div class="nodata">Žádná data</div>
+        {else}
+            <p class="text">{$binaryData['note']}</p>
+        {/if}
     </div>
 </section>
 
 
-<section id="data">
+<section id="linked">
     <div class="container">
         <h2>Zpracování</h2>
-        {control binaryProcessingGrid}
-
+        {if $binaryData["countProcessing"] == 0}
+            <div class="nodata">Žádná data</div>
+        {else}
+            {control binaryProcessingGrid}
+        {/if}
     </div>
 </section>

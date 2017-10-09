@@ -176,7 +176,7 @@ table tfoot{
 	background: #F0F0F0;
 	box-sizing: border-box;
 	border-radius: 0.3em;
-	margin-bottom: 4em;
+	margin-bottom: 1em;
 }
 
 /* pagination table style */
@@ -204,6 +204,7 @@ ul.pagination li.count{
 
 /* previews */
 
+
 div.preview{
 	width: 100%;
 	background-size: cover;
@@ -216,10 +217,29 @@ div.preview{
 	height: 30em;
 }
 
+
 /* text */
+
 
 .text{
 	padding: 1em;
     background: #f0f0f0;
     border-radius: 0.3em;
+}
+
+
+/* tags */
+
+
+ul.tags{
+	padding: 0;
+	margin: 1em 0;
+}
+
+ul.tags li{
+	display: inline-block;
+	background: #EEE;
+	border-radius: 0.3em;
+	padding: 0.75em 1em;
+	margin: 0 0.5em 0.5em 0;
 }

@@ -30,6 +30,10 @@ class Processing extends AM {
     private $maskId;
     private $binaryId;
 
+    /* --------------------------------------------------------------------
+    * PUBLIC Konstruktor
+    * -------------------------------------------------------------------- */
+
     public function __construct(AD\Processings $processings, AT\ProcessingTable $processingsTable, AD\Binaries $binaries, AD\Materials $materials, AD\Masks $masks, AD\Users $users, User $user) {
     	parent::__construct($user);
 	$this->processingFacade = $processings;
@@ -41,197 +45,182 @@ class Processing extends AM {
 	$this->user = $user;
     }
 
-    public function prepareDataAll($order, Paginator $paginator = NULL) {
-	$user = $this->user->id;
 
-	$selection = $this->processingFacade->findAllByAuthor($user, $order, $paginator);
-	$gridSelection = [];
-	foreach ($selection as $item) {
-	    $gridItem = new AT\ProcessingItem($item);
+    /* --------------------------------------------------------------------
+    * PUBLIC Tabulky - pomocne fce
+    * -------------------------------------------------------------------- */
 
-	    $mask = $this->maskFacade->findById($item->mask);
-	    $material = $this->materialsFacade->findById($item->material);
-	    $binary = $this->binariesFacade->findById($item->binary);
 
-	    if ($item->mask) {
-		$gridItem->mask = $mask->getName();
-		$gridItem->maskId = $item->mask;
-	    }
+    public function addMask($item, $gridItem, $mask = NULL)
+    {
+    	if (!$item->mask)
+    		return;
 
-	    if ($item->material) {
-		$gridItem->material = $material->getName();
-		$gridItem->materialId = $item->material;
-	    }
+    	if ($material == NULL)
+    	{
+    		$mask = $this->maskFacade->findById($item->mask);
+    	}
 
-	    if ($item->binary) {
-		$gridItem->binary = $binary->getName();
-		$gridItem->binaryId = $item->binary;
-	    }
-
-	    //--------public state------------
-	    if ($gridItem->public) {
-		$gridItem->public = 'ano';
-	    } else {
-		$gridItem->public = 'ne';
-	    }
-	    //-------- processing status---------
-	    $gridItem->statusNo = $gridItem->status;
-	    if ($gridItem->status == 1) {
-		$gridItem->status = 'pracuje';
-	    } else if ($gridItem->status == 2) {
-		$gridItem->status = 'čeká na potvrzení';
-	    } else {
-		$gridItem->status = 'hotovo';
-	    }
-
-	    $gridSelection[] = $gridItem;
-	}
-
-	return $gridSelection;
+    	$gridItem->mask = $mask->name;
+		$gridItem->maskId = $mask->id;
     }
 
-    public function prepareDataAllByMaterial($order, Paginator $paginator = NULL) {
-	$selection = $this->processingFacade->findAllByMaterial($this->materialId, $order, $paginator);
-	$gridSelection = [];
-	foreach ($selection as $item) {
-	    $gridItem = new AT\ProcessingItem($item);
-	    $gridItem->material = $item->name;
-	    $gridItem->materialId = $item->id;
-	    $autorId = $item->author;
-	    $gridItem->author = $this->userFacade->findById($item->author)->getName();
-	    $mask = $this->maskFacade->findById($item->mask);
-	    $binary = $this->binariesFacade->findById($item->binary);
+    public function addMaterial($item, $gridItem, $material = NULL)
+    {
+    	if (!$item->material)
+    		return;
 
-	    if ($item->mask) {
-		$gridItem->mask = $mask->getName();
-		$gridItem->maskId = $item->mask;
-	    }
+    	if ($material == NULL)
+    	{
+    		$material = $this->materialsFacade->findById($item->mask);
+    	}
 
-	    if ($item->binary) {
-		$gridItem->binary = $binary->getName();
-		$gridItem->binaryId = $item->binary;
-	    }
-
-	    //--------public state------------
-	    if ($gridItem->public) {
-		$gridItem->public = 'ano';
-	    } else {
-		$gridItem->public = 'ne';
-	    }
-	    //-------- processing status---------
-	    $gridItem->statusNo = $gridItem->status;
-	    if ($gridItem->status == 1) {
-		$gridItem->status = 'pracuje';
-	    } else if ($gridItem->status == 2) {
-		$gridItem->status = 'čeká na potvrzení';
-	    } else {
-		$gridItem->status = 'hotovo';
-	    }
-
-	    if ($gridItem->public == 'ano' || $autorId == $this->user->id) {
-		  $gridSelection[] = $gridItem;
-	    }
-	}
-
-	return $gridSelection;
+    	$gridItem->material = $material->name;
+		$gridItem->materialId = $material->id;
     }
 
-    public function prepareDataAllByMask($order, Paginator $paginator = NULL) {
-	$selection = $this->processingFacade->findAllByMask($this->maskId, $order, $paginator);
-	$gridSelection = [];
-	foreach ($selection as $item) {
-	    $gridItem = new AT\ProcessingItem($item);
-	    $autorId = $item->author;
-	    $gridItem->author = $this->userFacade->findById($item->author)->getName();
-	    $material = $this->materialsFacade->findById($item->material);
-	    $binary = $this->binariesFacade->findById($item->binary);
 
-	    if ($item->material) {
-		$gridItem->material = $material->getName();
-		$gridItem->materialId = $item->material;
-	    }
+	public function addBinary($item, $gridItem, $binary = NULL)
+    {
+    	if (!$item->binary)
+    		return;
 
-	    if ($item->binary) {
-		$gridItem->binary = $binary->getName();
-		$gridItem->binaryId = $item->binary;
-	    }
+    	if ($binary == NULL)
+    	{
+    		$binary = $this->binariesFacade->findById($item->mask);
+    	}
 
-	    //--------public state------------
-	    if ($gridItem->public) {
-		$gridItem->public = 'ano';
-	    } else {
-		$gridItem->public = 'ne';
-	    }
-	    //-------- processing status---------
-	    $gridItem->statusNo = $gridItem->status;
-	    if ($gridItem->status == 1) {
-		$gridItem->status = 'pracuje';
-	    } else if ($gridItem->status == 2) {
-		$gridItem->status = 'čeká na potvrzení';
-	    } else {
-		$gridItem->status = 'hotovo';
-	    }
-
-	    if ($gridItem->public == 'ano' || $autorId == $this->user->id) {
-		$gridSelection[] = $gridItem;
-	    }
-	}
-
-	return $gridSelection;
+    	$gridItem->binary = $binary->name;
+		$gridItem->binaryId = $binary->id;
     }
 
-    public function prepareDataAllByBinary($order, Paginator $paginator = NULL) {
-	$selection = $this->processingFacade->findAllByBInary($this->binaryId, $order, $paginator);
-	$gridSelection = [];
-	foreach ($selection as $item) {
-	    $gridItem = new AT\ProcessingItem($item);
-	    $autorId = $item->author;
-	    $gridItem->author = $this->userFacade->findById($item->author)->getName();
-	    $material = $this->materialsFacade->findById($item->material);
-	    $mask = $this->maskFacade->findById($item->mask);
-
-	    if ($item->material) {
-		$gridItem->material = $material->getName();
-		$gridItem->materialId = $item->material;
-	    }
-
-	    if ($item->mask) {
-		$gridItem->mask = $mask->getName();
-		$gridItem->maskId = $item->mask;
-	    }
-
-	    //--------public state------------
-	    if ($gridItem->public) {
-		$gridItem->public = 'ano';
-	    } else {
-		$gridItem->public = 'ne';
-	    }
-	    //-------- processing status---------
-	    $gridItem->statusNo = $gridItem->status;
-	    if ($gridItem->status == 1) {
-		$gridItem->status = 'pracuje';
-	    } else if ($gridItem->status == 2) {
-		$gridItem->status = 'čeká na potvrzení';
-	    } else {
-		$gridItem->status = 'hotovo';
-	    }
-
-	    if ($gridItem->status == 'hotovo' && ($gridItem->public == 'ano' || $autorId == $this->user->id)) {
-		$gridSelection[] = $gridItem;
-	    }
-	}
-
-	return $gridSelection;
+    public function setupAttributes($item)
+    {
+    	if ($gridItem->public)
+    	{
+			$gridItem->public = 'ano';
+		}
+		else
+		{
+			$gridItem->public = 'ne';
+		}
+		  
+		$gridItem->statusNo = $gridItem->status;
+		
+		switch ($gridItem->status)
+		{
+		    case 1:
+		        $gridItem->status = 'pracuje';
+		        break;
+		    case 2:
+		        $gridItem->status = 'čeká na potvrzení';
+		        break;
+		    default:
+		        $gridItem->status = 'hotovo';
+		        break;
+		}
     }
 
-    public function getDataAll($filter, $order, Paginator $paginator = NULL) {
-	$selection = $this->prepareDataAll($order, $paginator);
-	return $selection;
+
+	/* --------------------------------------------------------------------
+    * PUBLIC Tabulky 
+    * -------------------------------------------------------------------- */
+
+
+    public function getDataAllByAuthor($order, Paginator $paginator = NULL)
+    {
+		$user = $this->user->id;
+		$selection = $this->processingFacade->findAllByAuthor($user, $order, $paginator);
+		$gridSelection = [];
+
+		foreach ($selection as $item)
+		{
+		    $gridItem = new AT\ProcessingItem($item);
+		    $this->addMask($item, $gridItem);
+		    $this->addMaterial($item, $gridItem);
+		    $this->addBinary($item, $gridItem);
+		    $this->setupAttributes($gridItem);
+		    $gridSelection[] = $gridItem;
+		}
+
+		return $gridSelection;
     }
 
-    public function getDataSourceSumAuthor($filter, $order) {
-	$count = $this->processingFacade->countByAuthorId($this->user->id);
-	return $count;
+    public function prepareDataAllByMaterial($order, Paginator $paginator = NULL)
+    {
+		$selection = $this->processingFacade->findAllByMaterial($this->materialId, $order, $paginator);
+		$gridSelection = [];
+
+		foreach ($selection as $item)
+		{
+			if (!$item->public && ($item->author != $this->user->id))
+            {
+                continue;
+            }
+
+		    $gridItem = new AT\ProcessingItem($item);
+		    $this->addMask($item, $gridItem);
+		    $this->addMaterial($item, $gridItem);
+		    $this->addBinary($item, $gridItem);
+		    $this->setupAttributes($gridItem);
+		    $gridItem->author = $this->userFacade->findById($item->author)->getName();
+			$gridSelection[] = $gridItem;
+		}
+
+		return $gridSelection;
+    }
+
+    public function prepareDataAllByMask($order, Paginator $paginator = NULL)
+    {
+		$selection = $this->processingFacade->findAllByMask($this->maskId, $order, $paginator);
+		$gridSelection = [];
+		foreach ($selection as $item)
+		{
+		    if (!$item->public && ($item->author != $this->user->id))
+            {
+                continue;
+            }
+
+		    $gridItem = new AT\ProcessingItem($item);
+		    $this->addMask($item, $gridItem);
+		    $this->addMaterial($item, $gridItem);
+		    $this->addBinary($item, $gridItem);
+		    $this->setupAttributes($gridItem);
+		    $gridItem->author = $this->userFacade->findById($item->author)->getName();
+			$gridSelection[] = $gridItem;
+		}
+
+		return $gridSelection;
+    }
+
+    public function prepareDataAllByBinary($order, Paginator $paginator = NULL)
+    {
+		$selection = $this->processingFacade->findAllByBinary($this->binaryId, $order, $paginator);
+		$gridSelection = [];
+		foreach ($selection as $item)
+		{
+		    if (!$item->public && ($item->author != $this->user->id))
+            {
+                continue;
+            }
+
+		    $gridItem = new AT\ProcessingItem($item);
+		    $this->addMask($item, $gridItem);
+		    $this->addMaterial($item, $gridItem);
+		    $this->addBinary($item, $gridItem);
+		    $this->setupAttributes($gridItem);
+		    $gridItem->author = $this->userFacade->findById($item->author)->getName();
+			$gridSelection[] = $gridItem;
+		    
+		}
+
+		return $gridSelection;
+    }
+
+    public function getDataSourceSumAuthor($filter, $order)
+    {
+		$selection = $this->processingFacade->findAllByAuthor($this->user->id);
+		return $this->countVisible($selection, $this->user->id);
     }
     
     public function getDataSourceSumMask($filter, $order)
@@ -246,56 +235,69 @@ class Processing extends AM {
         return $this->countVisible($selection, $this->user->id);
     }
     
-        public function getDataSourceSumBinary($filter, $order) {
-	$count = $this->processingFacade->countByBinaryId($this->binaryId);
-	return $count;
+    public function getDataSourceSumBinary($filter, $order)
+    {
+		$selection = $this->processingFacade->findAllByBinary($this->binaryId);
+		return $this->countVisible($selection, $this->user->id);
     }
 
-    public function getDataAllByMaterial($filter, $order, Paginator $paginator = NULL) {
-	$selection = $this->prepareDataAllByMaterial($order, $paginator);
-	return $selection;
+	public function getDataAllByAuthor($filter, $order, Paginator $paginator = NULL)
+    {
+		$selection = $this->prepareDataAllByAuthor($order, $paginator);
+		return $selection;
     }
 
-    public function getDataAllByMask($filter, $order, Paginator $paginator = NULL) {
-	$selection = $this->prepareDataAllByMask($order, $paginator);
-	return $selection;
+    public function getDataAllByMaterial($filter, $order, Paginator $paginator = NULL)
+    {
+		$selection = $this->prepareDataAllByMaterial($order, $paginator);
+		return $selection;
     }
 
-    public function getDataAllByBinary($filter, $order, Paginator $paginator = NULL) {
-	$selection = $this->prepareDataAllByBinary($order, $paginator);
-	return $selection;
+    public function getDataAllByMask($filter, $order, Paginator $paginator = NULL)
+    {
+		$selection = $this->prepareDataAllByMask($order, $paginator);
+		return $selection;
     }
 
-    public function tableByUser() {
-	$grid = $this->processingTable->createByUser();
-	//LOOK HERE - K vyrobenému gridu navážu funkci která si to bude skrz fasádu tahat ty informace...
-	$grid->setDataSourceCallback([$this, 'getDataAll']);
-	$grid->setPagination(4, [$this, 'getDataSourceSumAuthor']);
-	return $grid;
+    public function getDataAllByBinary($filter, $order, Paginator $paginator = NULL)
+    {
+		$selection = $this->prepareDataAllByBinary($order, $paginator);
+		return $selection;
     }
 
-    public function tableByMaterial($materialId) {
-	$grid = $this->processingTable->createByMaterial();
-	$this->materialId = $materialId;
-	$grid->setDataSourceCallback([$this, 'getDataAllByMaterial']);
-	$grid->setPagination(4, [$this, 'getDataSourceSumMaterial']);
-	return $grid;
+    public function tableByUser()
+    {
+		$grid = $this->processingTable->createByUser();
+		$grid->setDataSourceCallback([$this, 'getDataAllByAuthor']);
+		$grid->setPagination(4, [$this, 'getDataSourceSumAuthor']);
+		return $grid;
     }
 
-    public function tableByMask($maskId) {
-	$grid = $this->processingTable->createByMask();
-	$this->maskId = $maskId;
-	$grid->setDataSourceCallback([$this, 'getDataAllByMask']);
-	$grid->setPagination(4, [$this, 'getDataSourceSumMask']);
-	return $grid;
+    public function tableByMaterial($materialId)
+    {
+		$grid = $this->processingTable->createByMaterial();
+		$this->materialId = $materialId;
+		$grid->setDataSourceCallback([$this, 'getDataAllByMaterial']);
+		$grid->setPagination(4, [$this, 'getDataSourceSumMaterial']);
+		return $grid;
     }
 
-    public function tableByBinary($binaryId) {
-	$grid = $this->processingTable->createByBinary();
-	$this->binaryId = $binaryId;
-	$grid->setDataSourceCallback([$this, 'getDataAllByBinary']);
-	$grid->setPagination(4, [$this, 'getDataSourceSumBinary']);
-	return $grid;
+    public function tableByMask($maskId)
+    {
+		$grid = $this->processingTable->createByMask();
+		$this->maskId = $maskId;
+		$grid->setDataSourceCallback([$this, 'getDataAllByMask']);
+		$grid->setPagination(4, [$this, 'getDataSourceSumMask']);
+		return $grid;
+    }
+
+    public function tableByBinary($binaryId)
+    {
+		$grid = $this->processingTable->createByBinary();
+		$this->binaryId = $binaryId;
+		$grid->setDataSourceCallback([$this, 'getDataAllByBinary']);
+		$grid->setPagination(4, [$this, 'getDataSourceSumBinary']);
+		return $grid;
     }
 
 }

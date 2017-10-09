@@ -62,9 +62,9 @@ class Binaries extends ADBF
 		return $this->repository->findAll();
     }
 
-    public function countByAuthorId($userId)
+    public function countByAuthorId($author)
     {
-		$selection = $this->repository->findBy(array('author' => $userId));
+		$selection = $this->repository->findBy(array('author' => $author));
 		return count($selection);
     }
 
