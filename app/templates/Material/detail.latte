@@ -1,13 +1,9 @@
 {* Latte template *}
-{block styles}
-{include parent}
-	<link rel="stylesheet" href="{$basePath}/css/detail.css">
-{/block}
 {block content}
 
-<section id="material-info">
+<section id="preview">
     <div class="container">
-        <ul class="stats">
+        <ul class="info">
             <li>{$materialData["countProcessing"]} zpracování</li>
             <li>{$materialData["countMask"]} navázaných masek</li>
             <li>materiál</li>
@@ -22,7 +18,7 @@
         </ul>
     </div>
 </section>
-<section id="statistics">
+<section id="data">
     <div class="container">
         <h2>Informace</h2>
         <table class="info">
@@ -43,8 +39,8 @@
         </table>
         <ul class="tags">
             {foreach $materialData['tags'] as $key => $value}
-                <li>{$value}</li>
-		{/foreach}
+                <li class="tag">{$value}</li>
+            {/foreach}
         </ul>
         <table class="info">
             <tr>
@@ -67,11 +63,11 @@
     </div>
 </section>
 
-<section id="data">
+<section id="linked">
     <div class="container">
         <h2>Zpracování</h2>
         {if $materialData["countProcessing"] == 0}
-            <div class="nodata">Žádná data</div>
+            <div class="list nodata">Žádná data</div>
         {else}
             {control materialProcessingGrid}
         {/if}
@@ -80,7 +76,7 @@
     <div class="container">
         <h2>Masky</h2>
         {if $materialData["countMask"] == 0}
-            <div class="nodata">Žádná data</div>
+            <div class="list nodata">Žádná data</div>
         {else}
             {control materialMaskGrid}
         {/if}

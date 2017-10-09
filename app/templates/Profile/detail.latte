@@ -1,15 +1,11 @@
 {* Latte template *}
-{block styles}
-{include parent}
-<link rel="stylesheet" href="{$basePath}/css/profile.css">
-{/block}
 {block content}
 
-<section id="user-info">
+<section id="info">
     <div class="container">
         <h1>Uživatel {$userData["name"]} <a n:href="Profile:modify"><img id="logo-small" src="{$basePath}/images/edit_icon.png" width="32" height="32" align="right"></a>
         </h1>
-        <ul class="stats">
+        <ul class="info">
             <li>{$userData["processingCount"]} zpracovaných textur</li>
             <li>{$userData["binaryCount"]} binárek</li>
             <li>{$userData["maskgCount"]} masky</li>
@@ -27,25 +23,25 @@
     <div class="container">
         <h2>Zpracování</h2>
 		{if $userData["processingCount"] == 0}
-			<div class="nodata">Žádná data</div>
+			<div class="list nodata">Žádná data</div>
 		{else}
         	{control processingGrid}
 		{/if}
         <h2>Spustitelné binárky</h2>
 		{if $userData["binaryCount"] == 0}
-			<div class="nodata">Žádná data</div>
+			<div class="list nodata">Žádná data</div>
 		{else}
         	{control binaryGrid}
 		{/if}
         <h2>Masky</h2>
 		{if $userData["maskgCount"] == 0}
-			<div class="nodata">Žádná data</div>
+			<div class="list nodata">Žádná data</div>
 		{else}
         	{control maskGrid}
 		{/if}
         <h2>Materiály</h2>
 		{if $userData["materialCount"] == 0}
-			<div class="nodata">Žádná data</div>
+			<div class="list nodata">Žádná data</div>
 		{else}
         	{control materialGrid}
 		{/if}

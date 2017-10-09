@@ -1,0 +1,199 @@
+/* header */
+
+
+header{
+	width: 100%;
+	padding: 1em 0;
+	background: #444;
+	overflow: auto;
+}
+
+header form,
+header a{
+	box-sizing: border-box;
+	float: left;
+	text-align: center;
+}
+
+header a {
+	width: 10%;
+}
+
+header form {
+	width: 80%;
+	padding: 0 25%;
+}
+
+header form input{
+	float: left;
+}
+
+header form #search{
+	background: #555;
+	color: #FFF;
+	width: 90%;
+	box-sizing: border-box;
+}
+
+header form #search:focus{
+	background: #FFF;
+	color: #111;
+	transition: background 0.3s ease;
+}
+
+header form #submit{
+	padding: 0.75em 0 0.75em 0;
+	height: 2.5em;
+	background: rgba(0, 0, 0, 0);
+	width: 10%;
+	box-sizing: border-box;
+}
+
+#logo, #avatar{
+	height: 2.5em;
+}
+
+
+/* lists */
+
+
+ul.info li:first-child,
+ul.actions li:first-child{
+    border-radius: 0.3em 0 0 0.3em;
+}
+
+ul.info li:last-child,
+ul.actions li:last-child{
+    border-radius: 0 0.3em 0.3em 0;
+}
+
+ul.info,
+ul.actions{
+	list-style: none;
+	width: 100%;
+	padding: 0;
+	display: flex;
+	border-radius: 0.3em;
+	text-align: center;
+}
+
+ul.info li,
+ul.actions li{
+	width: 100%;
+	box-sizing: border-box;
+}
+
+ul.info li{
+	padding: 1em;
+	background-color: #F0F0F0;
+}
+
+ul.actions li{
+	background-color: #CCC;
+}
+
+ul.actions li:hover{
+	background-color: #F0F0F0;
+}
+
+ul.actions li a{
+	padding: 1em;
+	display: block;
+}
+
+
+/* tables */
+
+
+table tr:first-child th:first-child{
+    border-top-left-radius: 0.3em;
+}
+
+table tr:first-child th:last-child {
+    border-top-right-radius: 0.3em;
+}
+
+table tr:last-child td:first-child {
+    border-bottom-left-radius: 0.3em;
+}
+
+table tr:last-child td:last-child {
+    border-bottom-right-radius: 0.3em;
+}
+
+table{
+	text-align: left;
+	border-spacing: 0;
+	border-collapse: collapse;
+	width: 100%;
+	table-layout: fixed;
+}
+
+table tr{
+	border-radius: 0.5em;
+	background: #F0F0F0;
+	padding: 0.1em;
+	border-bottom: 0.1em solid #FFF;
+}
+
+table tr th{
+	padding: 0.5em 2em;
+	font-weight: normal;
+	color: #AAA;
+}
+
+table tr td{
+	padding: 1em 2em;
+}
+
+table tr td.preview{
+	background: #CCC;
+	width: 30%;
+	height: 5em;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+table tfoot tr {
+	background: none;
+}
+
+table tfoot{
+	vertical-align: middle;
+}
+
+
+.list.nodata{
+	text-align: center;
+	font-size: 1em;
+	color: #AAA;
+	padding: 2em;
+	width: 100%;
+	background: #F0F0F0;
+	box-sizing: border-box;
+	border-radius: 0.3em;
+	margin-bottom: 4em;
+}
+
+/* pagination table style */
+
+ul.pagination {
+	padding: 0;
+	text-align: center;
+}
+
+ul.pagination li {
+	display: inline-block;
+	padding: 0 1em;
+}
+
+ul.pagination li a img{
+	width: 2em;
+	vertical-align: middle;
+}
+
+ul.pagination li.count{
+	font-size: 1em;
+	color: #B9B9B9;
+}

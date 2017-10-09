@@ -12,9 +12,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	{block styles}
 	<link rel="stylesheet" href="{$basePath}/css/style.css">
-	<link rel="stylesheet" href="{$basePath}/css/header.css">
-    <link rel="stylesheet" href="{$basePath}/css/tables.css">
-	<link rel="stylesheet" href="{$basePath}/css/lists.css">
+	<link rel="stylesheet" href="{$basePath}/css/style-ext.css">
+    <link rel="stylesheet" href="{$basePath}/css/form.css">
 	{/block}
 	{block head}
 	{/block}
@@ -41,15 +40,18 @@
 	<footer>
 		
 	</footer>
+
 	{block scripts}
 	<script type="text/javascript" src="{$basePath}/js/jquery-3.2.1.min.js"></script>
 	<script src="https://nette.github.io/resources/js/netteForms.min.js"></script>
 	<script src="{$basePath}/js/main.js"></script>
 	<script type="text/javascript" src="{$basePath}/js/nette.ajax.js/nette.ajax.js"></script>
 	<script type="text/javascript">
-	/* inicializace ajaxu */
-	$(function () { $.nette.init(); });
+		/* inicializace ajaxu */
+		$(function () { $.nette.init(); });
 	</script>
 	{/block}
+
+
 </body>
 </html>
