@@ -8,13 +8,18 @@
             <li>{$materialData["countMask"]} navázaných masek</li>
             <li>materiál</li>
         </ul>
+        <div class="preview" style="background-image: url({$materialData['previewPath']})"></div>
         <img src="{$materialData['previewPath']}" />
         <ul class="actions {if $materialData['owner']}owner{else}observer{/if}">
             <li><a href="">zpracovat</a></li>
             <li><a href="">přidat masku</a></li>
-            {if $materialData['owner']}<li><a n:href="Material:modify materialId => $materialId">upravit</a></li>{/if}
+            {if $materialData['owner']}
+                <li><a n:href="Material:modify materialId => $materialId">upravit</a></li>
+            {/if}
             <li><a href="{$materialData["filepath"]}" download>stáhnout</a></li>
-            {if $materialData['owner']}<li><a n:href="Material:delete materialId => $materialId">smazat</a></li>{/if}
+            {if $materialData['owner']}
+                <li><a n:href="Material:delete materialId => $materialId">smazat</a></li>
+            {/if}
         </ul>
     </div>
 </section>
@@ -59,7 +64,11 @@
             </tr>
         </table>
         <h2>Popis</h2>
-        <p>{$materialData['note']}</p>
+        {if $materialData['note'] == "" }
+            <div class="nodata">Žádná data</div>
+        {else}
+            <p class="text">{$materialData['note']}</p>
+        {/if}
     </div>
 </section>
 
@@ -67,7 +76,7 @@
     <div class="container">
         <h2>Zpracování</h2>
         {if $materialData["countProcessing"] == 0}
-            <div class="list nodata">Žádná data</div>
+            <div class="nodata">Žádná data</div>
         {else}
             {control materialProcessingGrid}
         {/if}
@@ -76,7 +85,7 @@
     <div class="container">
         <h2>Masky</h2>
         {if $materialData["countMask"] == 0}
-            <div class="list nodata">Žádná data</div>
+            <div class="nodata">Žádná data</div>
         {else}
             {control materialMaskGrid}
         {/if}

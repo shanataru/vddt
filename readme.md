@@ -2,6 +2,7 @@
 
 Na čem se pracuje aktuálně:
  * Jsou rozkopaná CSSka!!!!! Pokud se vám něco nevykrsluje správně, tak klidně vytvořte isuue, ale zatím jsme v průběhu přechodu na novější verzi cssek (smutně pokud to vypadá všechny jako dřív, tak je to už ta nová verze a funguje to)
+
 Co se navrhuje/vymýšlí:
  * Vyhledávání - viz issue #3, hledáme nápady
 

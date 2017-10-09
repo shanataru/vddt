@@ -164,7 +164,10 @@ table tfoot{
 }
 
 
-.list.nodata{
+/* no data - universal */
+
+
+.nodata{
 	text-align: center;
 	font-size: 1em;
 	color: #AAA;
@@ -196,4 +199,27 @@ ul.pagination li a img{
 ul.pagination li.count{
 	font-size: 1em;
 	color: #B9B9B9;
+}
+
+
+/* previews */
+
+div.preview{
+	width: 100%;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+	border-radius: 0.3em;
+}
+
+#preview div.preview{
+	height: 30em;
+}
+
+/* text */
+
+.text{
+	padding: 1em;
+    background: #f0f0f0;
+    border-radius: 0.3em;
 }
