@@ -94,10 +94,14 @@ span.username:before{
 }
 
 section{
-	padding: 4em 2em 0em 2em;
+	padding: 0em 2em;
 	width: 100%;
 	box-sizing: border-box;
 	/*border-bottom: 1px solid #AAA;*/
+}
+
+section:first-of-type{
+	padding-top: 4em;
 }
 
 section > .container{

@@ -11,7 +11,7 @@
             <li>{$binaryData['countProcessing']} zpracování</li>
             <li>binárka</li>
         </ul>
-        <ul class="actions {if $materialData['owner']}owner{else}observer{/if}">
+        <ul class="actions {if $binaryData['owner']}owner{else}observer{/if}">
             <li><a href="">spustit</a></li>
             {if $binaryData['owner']}<li><a n:href="Binary:modify binaryId => $binaryId">upravit</a></li>{/if}
             <li><a href="">stáhnout</a></li>

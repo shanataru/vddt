@@ -121,36 +121,9 @@ class Processing extends AM {
 		}
     }
 
-
-	/* --------------------------------------------------------------------
-    * PUBLIC Tabulky 
-    * -------------------------------------------------------------------- */
-
-
-    public function prepareDataAllByAuthor($order, Paginator $paginator = NULL)
+    public function processSelection($selection)
     {
-		$user = $this->user->id;
-		$selection = $this->processingFacade->findAllByAuthor($user, $order, $paginator);
-		$gridSelection = [];
-
-		foreach ($selection as $item)
-		{
-		    $gridItem = new AT\ProcessingItem($item);
-		    $this->addMask($item, $gridItem);
-		    $this->addMaterial($item, $gridItem);
-		    $this->addBinary($item, $gridItem);
-		    $this->setupAttributes($gridItem);
-		    $gridSelection[] = $gridItem;
-		}
-
-		return $gridSelection;
-    }
-
-    public function prepareDataAllByMaterial($order, Paginator $paginator = NULL)
-    {
-		$selection = $this->processingFacade->findAllByMaterial($this->materialId, $order, $paginator);
-		$gridSelection = [];
-
+    	$gridSelection = [];
 		foreach ($selection as $item)
 		{
 			if (!$item->public && ($item->author != $this->user->id))
@@ -170,51 +143,35 @@ class Processing extends AM {
 		return $gridSelection;
     }
 
+
+	/* --------------------------------------------------------------------
+    * PUBLIC Tabulky 
+    * -------------------------------------------------------------------- */
+
+
+    public function prepareDataAllByAuthor($order, Paginator $paginator = NULL)
+    {
+		$user = $this->user->id;
+		$selection = $this->processingFacade->findAllByAuthor($user, $order, $paginator);
+		return $this->processSelection($selection);
+    }
+
+    public function prepareDataAllByMaterial($order, Paginator $paginator = NULL)
+    {
+		$selection = $this->processingFacade->findAllByMaterial($this->materialId, $order, $paginator);
+		return $this->processSelection($selection);
+    }
+
     public function prepareDataAllByMask($order, Paginator $paginator = NULL)
     {
 		$selection = $this->processingFacade->findAllByMask($this->maskId, $order, $paginator);
-		$gridSelection = [];
-		foreach ($selection as $item)
-		{
-		    if (!$item->public && ($item->author != $this->user->id))
-            {
-                continue;
-            }
-
-		    $gridItem = new AT\ProcessingItem($item);
-		    $this->addMask($item, $gridItem);
-		    $this->addMaterial($item, $gridItem);
-		    $this->addBinary($item, $gridItem);
-		    $this->setupAttributes($gridItem);
-		    $gridItem->author = $this->userFacade->findById($item->author)->getName();
-			$gridSelection[] = $gridItem;
-		}
-
-		return $gridSelection;
+		return $this->processSelection($selection);
     }
 
     public function prepareDataAllByBinary($order, Paginator $paginator = NULL)
     {
 		$selection = $this->processingFacade->findAllByBinary($this->binaryId, $order, $paginator);
-		$gridSelection = [];
-		foreach ($selection as $item)
-		{
-		    if (!$item->public && ($item->author != $this->user->id))
-            {
-                continue;
-            }
-
-		    $gridItem = new AT\ProcessingItem($item);
-		    $this->addMask($item, $gridItem);
-		    $this->addMaterial($item, $gridItem);
-		    $this->addBinary($item, $gridItem);
-		    $this->setupAttributes($gridItem);
-		    $gridItem->author = $this->userFacade->findById($item->author)->getName();
-			$gridSelection[] = $gridItem;
-		    
-		}
-
-		return $gridSelection;
+		return $this->processSelection($selection);
     }
 
     public function getDataSourceSumAuthor($filter, $order)
