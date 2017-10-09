@@ -1,53 +1,32 @@
 {* This is the welcome page, you can delete it *}
-{block styles}
-{include parent}
-<link rel="stylesheet" href="{$basePath}/css/homepage.css">
-<link rel="stylesheet" href="{$basePath}/css/images-grid.css">
-{/block}
 {block content}
-<section id="user-info">
+<section id="main">
     <div class="container">
-        <div class="site-info">
+        <div class="info">
             <h1>Databáze dynamických textur</h1>
             <p>Systém pro shromažďování textur a modifikaci materiálů pomocí uživatelských spustitelných souborů.</p>
         </div>
-        <ul class="account">
+        <ul class="actions">
             {if $user->loggedIn}
                 <li><a n:href="Sign:out">odhlásit se</a></li>
-                {else}
+            {else}
                 <li><a n:href="Sign:up">vytvořit účet</a></li>
                 <li><a n:href="Sign:in">přihlásit se</a></li>
-                {/if}
+            {/if}
         </ul>
-        <!--<p>Stav uživatele: {$userStatus}</p>-->
     </div>
 </section>
-<section id="global-stats">
+<section id="global">
     <div class="container">
         <h2>Aktivita na serveru</h2>
-        <p>Nahrávejte foto či video materiály a zpracovávejte je online v databázi dynamických textur.</p>
-        <ul class="stats">
+        <ul class="info">
             <li>{$databaseData["countProcessing"]} zpracovaných textur</li>
             <li>{$databaseData["countBinaries"]} binárek</li>
             <li>{$databaseData["countMasks"]} masek</li>
             <li>{$databaseData["countMaterials"]} materiálů</li>
         </ul>
-    </div>
-</section>
-<section id="recently-added">
-    <div class="container">
-        <h2>Github</h2>
-        <a href="https://github.com/vojtatom/vddt">repo na githubu</a>
-        <h2>TODO's aneb co bylo řešeno a nedoděláno</h2>
-        <ol class="todos">
-            <li>Masky - nahrávání, detail, úprava, připojení k masce</li>
-            <li>Tagy - javascriptová interaktivní věc pro přidávání a mazání tagů</li>
-            <li>Akční tlačítka - styly - funguje to ale je to blbě udělané, trochu opravit by to chtělo...</li>
-            <li>Sjednocení názvu proměnných - často se vyskytují členské proměnné co obsahují stejná data, ale jmenují se mezi třídami zbytečně jinak.</li>
-            <li>Mail - vyhezčení</li>
-            <li>Vyhledávání - chybí vše (tj Search.php, SearchPresenter.php, nějaké gridy možná, latéčka...)</li>
-            <li>Komponenta na přidávání materiálů k maskám a naopak</li>
-            <li>Zpracování Processing.php, presenter, rozhraní na spouštění atd.</li>
-        </ol>
+        <ul class="actions">
+            <li><a href="https://github.com/vojtatom/vddt">Github</a></li>
+        </ul>
     </div>
 </section>
