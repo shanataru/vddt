@@ -12,7 +12,7 @@ use Nette\Application\UI\Form;
 use Nette\Utils\Image;
 use Nette\Utils\Paginator;
 
-class Material extends AM {
+class Search extends AM {
 
     /** @var AD\Materials */
     private $materialFacade;
