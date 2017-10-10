@@ -5,6 +5,7 @@ use App\Data\Entities;
 use Nette;
 use Kdyby;
 use App\Data\BaseFacade as ADBF;
+use Doctrine\DBAL\DriverManager;
 
 class Users extends ADBF
 {
@@ -116,6 +117,25 @@ class Users extends ADBF
     public function findById($id)
     {
         return $this->repository->findOneBy(array('id' => $id));
+    }
+
+
+    /**
+     * @param $params
+     * vrati entitu User nebo NULL
+     * @return mixed|null|object
+     */
+    public function findByQuery($params)
+    {
+        /*
+         * todo
+        $query = (new UserQuery())
+            ->withLastPost()
+            ->byUser($params->user);
+
+        $result = $repository->fetch($query);
+        return $result;
+        */
     }
 
 

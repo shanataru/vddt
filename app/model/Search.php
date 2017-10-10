@@ -74,10 +74,6 @@ class Search extends AM {
      * data["materials"] = [ material1, material2 ... ]
      * data["masks"] = [ mask1, mask2 ... ]
      *
-     * possibly helpful links (hlavne pro programovani ve fasadach):
-     * http://docs.doctrine-project.org/projects/doctrine-orm/en/latest/reference/native-sql.html
-     * http://docs.doctrine-project.org/projects/doctrine-dbal/en/latest/reference/query-builder.html (tohle mi silne pripomina nette database ale bacha neni to ORM tak to mozna nepujde)
-	 *
 	 * Prohledava materialy, masky, zpracovani a binarky
      */
     public function searchAll($query)//nevim jestli by se ta query nemela tvorit az tady v modelu misto v presenteru ???
@@ -108,5 +104,31 @@ class Search extends AM {
     {
 
     }
+
+
+    /* QUERY MAGIE*/
+    public  function searchFor($params){
+        //tady rozparsovane kousky budem hazet uz specializovanym fcim (viz vyse) (na uzivatele etc)
+        //milion ifu podle toho co hledame a pak neco takovehoto:
+        //todo
+        // a toto bude v nejake z tech hornich fci: $results = $this->userFacade->findByQuery($params); volame ve prisluslne fasade prislusny QueryObject ()
+        //return $results; //
+    }
+
+    /*tady budeme parsovat textik od uzivatele a predavat do searchFor kde se bude tvorit cele filtrovani*/
+    public function parseUserInput($form, $values){
+        //$params = todo
+        //return $this->searchFor($params);
+    }
+
+    public function searchForm()
+    {
+        //$form = $this->searchForm->create();//todo
+        //$form->onSuccess[] = array($this, 'parseUserInput');
+        //return $form;
+    }
+
+
+
 
 }
