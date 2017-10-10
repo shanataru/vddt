@@ -21,6 +21,9 @@ www/data/*
 .idea/**/gradle.xml
 .idea/**/libraries
 *.iws
+*.iml
+.idea/misc.xml
+*.ipr
+
 #CMake
 cmake-build-debug/
-
