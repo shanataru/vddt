@@ -39,7 +39,7 @@ services:
 	- App\Model\Binary
 	- App\Model\Product
 	- App\Forms\FormFactory
-	- App\Forms\SearchFactory
+	- App\Forms\SearchForm
 	- App\Forms\SignInForm
 	- App\Forms\SignUpForm
 	- App\Forms\ForgottenPasswordForm
