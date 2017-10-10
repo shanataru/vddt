@@ -32,12 +32,14 @@ services:
 	- App\Model\Model
 	- App\Model\Homepage
 	- App\Model\User
+	- App\Model\Search
 	- App\Model\Processing
 	- App\Model\Material
 	- App\Model\Mask
 	- App\Model\Binary
 	- App\Model\Product
 	- App\Forms\FormFactory
+	- App\Forms\SearchFactory
 	- App\Forms\SignInForm
 	- App\Forms\SignUpForm
 	- App\Forms\ForgottenPasswordForm
